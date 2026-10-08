@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page / Home page </title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            min-height: 100vh;
+            background-color: rgb(245, 239, 236);
+        }
+
+        body {
+            font-family: sans-serif;
+        }
+
+        .header {
+            background-color: rgb(177, 104, 45);
+            padding: 8px;
+            text-align: center;
+            color: white;
+        }
+
+        .nav {
+            background-color: rgb(255, 253, 252);
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+
+        }
+
+        .nav input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid grey;
+        }
+
+        .navList{
+            display: flex;
+            align-items: center;
+        }
+
+        .navList input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid grey;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        a{
+            text-decoration: none;
+            color: grey;
+        }
+        #LogInA{
+            background-color: rgb(177, 104, 45);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: underline;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        form{
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        }
+
+        .log-in{
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            gap: 20px;
+            width: 300px;
+            height: 200px;
+        }
+
+        form input{
+            padding: 8px;
+            font-family: monospace;
+        }
+
+        form button{
+            padding: 10px;
+            background-color: rgb(177, 104, 45);
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">50% Endirim</div>
+        <div class="nav">
+
+            <div class="logo">
+                <h1 class="logoH1">shoPIN</h1>
+            </div>
+
+            <div class="navList">
+                <ul>
+                    <li><a href="./HomePage(Shopping).html">Home</a></li>
+                    <li><a href="./SignUp(Shopping).html">Sign up</a></li>
+                    <li><a href="./ShopPage(Shopping).html">Shop</a></li>
+                    <li><input type="text" placeholder="Search"></li>
+                    <li><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <form action="">
+                <div class="log-in">
+                    <h2 class="logIn">Log In</h2>
+                    <input type="text" placeholder="Username">
+                    <input type="password" placeholder="Password">
+                    <button type="submit">Log In</button>
+                </div>
+
+
+            </form>
+        </div>
+    </div>
+
+    <script>
+
+        let inpName = document.querySelector('input[type="text"]');
+        let inpPass = document.querySelector('input[type="password"]');
+
+        let LogInBtn = document.querySelector('button[type="submit"]');
+
+        LogInBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            if(!isNaN(inpName.value) || inpName.value === "" || inpPass.value === "") {
+                alert("Please fill in all fields correctly");
+            }
+           
+        })
+
+        
+    </script>
+</body> 
+
+</html>

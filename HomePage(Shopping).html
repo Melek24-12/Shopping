@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            min-height: 100vh;
+            background-color: rgb(245, 239, 236);
+            display: flex;
+            flex-direction: column;
+
+        }
+
+
+        body {
+            font-family: sans-serif;
+        }
+
+        .header {
+            background-color: rgb(177, 104, 45);
+            padding: 8px;
+            text-align: center;
+            color: white;
+        }
+
+        .nav {
+            background-color: rgb(255, 253, 252);
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+
+
+        }
+
+        .navList {
+            display: flex;
+            align-items: center;
+        }
+
+        .navList input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid grey;
+        }
+
+        ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .basliq a {
+            text-decoration: none;
+            color: grey;
+        }
+
+        #LogInA {
+            background-color: rgb(177, 104, 45);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: underline;
+        }
+
+        img {
+
+            width: 280px;
+            height: auto;
+
+            border-radius: 10px;
+        }
+
+        .cont2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 100px;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            background-color: white;
+            height: 300px;
+            width: 65%;
+            border-radius: 10px;
+            margin-top: 20px;
+
+        }
+
+        .content h2 {
+            margin-left: 50px;
+            margin-top: 40px;
+            font-family: cursive;
+            font-size: 30px;
+        }
+
+        .content button {
+            margin-left: 50px;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgb(177, 104, 45);
+            color: white;
+            border-radius: 5px;
+            outline: none;
+            border: 1px solid rgb(114, 78, 49);
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        }
+
+        .content button a {
+            text-decoration: none;
+            color: white;
+        }
+
+        .contentFlex {
+            display: flex;
+            justify-content: center;
+
+            height: 80vh;
+        }
+
+        .footer {
+            background-color: rgb(182, 136, 98);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            margin-top: auto;
+        }
+
+        .nav i {
+            font-size: 25px;
+        }
+
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(245, 239, 236);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .spinner {
+            width: 45px;
+            height: 45px;
+            border: 5px solid #e5d4c8;
+            border-top-color: rgb(177, 104, 45);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .loader p {
+            color: rgb(177, 104, 45);
+            font-size: 17px;
+        }
+
+        .loader.hide {
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+     <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p>shoPIN is loading...</p>
+    </div>
+
+
+    <div class="container">
+
+        <div class="basliq">
+            <div class="header">Welcome us new shopping site</div>
+            <div class="nav">
+
+                <div class="logo">
+                    <h1 class="logoH1">shoPIN</h1>
+                </div>
+
+                <div class="navList">
+                    <ul>
+                        <li><a href="./HomePage(Shopping).html">Home</a></li>
+                        <li><a href="./SignUp(Shopping).html">Sign up</a></li>
+                        <li><a href="./ShopPage(Shopping).html">Shop</a></li>
+                        <li><input type="text" placeholder="Search"></li>
+                        <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
+                        <li><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contentFlex">
+            <div class="content">
+                <div class="cont1">
+                    <h2>Start shopping <br> with new style</h2><button><a href="./ShopPage(Shopping).html">Shop
+                            Now</a></button>
+                </div>
+
+                <div class="cont2"><img
+                        src="https://img.magnific.com/premium-vector/online-shopping-stylish-girl-looking-phone-holding-shopping-bagswoman-carrying-bags-shopping-online-with-mobile-phone_348404-1300.jpg?semt=ais_hybrid"
+                        alt="shopping img"> </div>
+
+
+            </div>
+        </div>
+
+        <div class="footer">
+
+            <p>&copy; 2023 shoPIN. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+
+        let loader = document.getElementById("loader");
+        window.addEventListener("load", function () {
+            loader.classList.add("hide");
+        }); 
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const navLinks = document.querySelectorAll(".navList ul li a");
+            navLinks.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const targetUrl = this.getAttribute("href");
+                    loader.classList.remove("hide");
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

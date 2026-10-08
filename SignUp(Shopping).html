@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            min-height: 100vh;
+            background-color: rgb(245, 239, 236);
+            display: flex;
+            flex-direction: column;
+
+        }
+
+
+        body {
+            font-family: sans-serif;
+        }
+
+        .header {
+            background-color: rgb(177, 104, 45);
+            padding: 8px;
+            text-align: center;
+            color: white;
+        }
+
+        .nav {
+            background-color: rgb(255, 253, 252);
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+
+
+        }
+
+        .navList {
+            display: flex;
+            align-items: center;
+        }
+
+        .navList input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid grey;
+        }
+
+        .basliq ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .basliq a {
+            text-decoration: none;
+            color: grey;
+        }
+
+        #LogInA {
+            background-color: rgb(177, 104, 45);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: underline;
+        }
+
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgb(245, 239, 236);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            z-index: 9999;
+        }
+
+        .spinner {
+            width: 45px;
+            height: 45px;
+            border: 5px solid #e5d4c8;
+            border-top-color: rgb(177, 104, 45);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        .loader p {
+            color: rgb(177, 104, 45);
+            font-size: 17px;
+        }
+
+        .loader.hide {
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .content form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            height: 490px;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .myForm h2{
+            color: rgb(177, 104, 45);
+        }
+        
+        .myForm p{
+            font-size: 14px;
+            color: grey;
+        }
+
+        .myForm p a{
+            color: rgb(177, 104, 45);
+            text-decoration: underline;
+        }
+
+        .myForm button{
+            background-color: rgb(177, 104, 45);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 100%;
+        }
+
+        .myForm button:hover{
+            background-color: rgb(202, 141, 92);
+        }
+
+        .myForm {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            border-radius: 10px;
+        }
+
+        .content input{
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid grey;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p>shoPIN is loading...</p>
+    </div>
+
+    <div class="container">
+        <div class="basliq">
+            <div class="header">Welcome us new shopping site</div>
+            <div class="nav">
+
+                <div class="logo">
+                    <h1 class="logoH1">shoPIN</h1>
+                </div>
+
+                <div class="navList">
+                    <ul>
+                        <li><a href="./HomePage(Shopping).html">Home</a></li>
+                        <li><a href="./SignUpPage(Shopping).html">Sign up</a></li>
+                        <li><a href="./ShopPage(Shopping).html">Shop</a></li>
+                        <li><input type="text" placeholder="Search"></li>
+                        <li><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="myForm">
+                <img src="./SingUpFoto.png" alt="Sign Up Image">
+                <form action="">
+                    <h2>Sign Up</h2>
+                    <p>Already have an account? <a href="./LoginPage(Shopping).html">Log in</a></p>
+
+                    <input type="text" placeholder="Full Name" required>
+                    <input type="email" placeholder="Email" required>
+                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Confirm Password" required>
+                    <button type="submit">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+        let loader = document.getElementById("loader");
+
+        window.addEventListener("pageshow", function () {
+            loader.classList.add("hide");
+        });
+
+        document.querySelectorAll("a[href]").forEach(function (link) {
+            link.addEventListener("click", function () {
+                let href = link.getAttribute("href");
+
+                if (href && href !== "#" && !href.startsWith("#")) {
+                    loader.classList.remove("hide");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
