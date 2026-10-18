@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>shoPIN - About Us</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: rgb(245, 239, 236);
+            color: #4b3527;
+        }
+
+        .header {
+            background-color: rgb(177, 104, 45);
+            padding: 8px;
+            text-align: center;
+            color: white;
+        }
+
+        .nav {
+            background-color: rgb(255, 253, 252);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        a {
+            text-decoration: none;
+            color: grey;
+        }
+
+        .nav a:hover {
+            color: rgb(177, 104, 45);
+        }
+
+        #aboutLink {
+            background-color: #b9733a;
+            padding: 8px 12px;
+            border-radius: 15px;
+            color: white;
+        }
+
+        .main {
+            width: 85%;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .intro {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px #00000015;
+        }
+
+        .intro h2 {
+            color: rgb(177, 104, 45);
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .features {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            flex: 1;
+            min-width: 200px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .feature h3 {
+            color: rgb(177, 104, 45);
+            margin-bottom: 12px;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .shopBtn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background-color: rgb(177, 104, 45);
+            color: white;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: rgb(156, 111, 75);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .nav {
+                justify-content: center;
+            }
+
+            .main {
+                width: 92%;
+            }
+
+            .intro {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">Welcome to our shopping site!</div>
+
+    <nav class="nav">
+        <h1>shoPIN</h1>
+
+        <ul>
+            <li><a href="./HomePage(Shopping).html">Home</a></li>
+            <li><a href="./SignUp(Shopping).html">Sign up</a></li>
+            <li><a href="./ShopPage(Shopping).html">Shop</a></li>
+            <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
+            <li><a href="./Contact(Shopping).html">Contact Us</a></li>
+            <li><a href="./LoginPage(Shopping).html">Log In</a></li>
+        </ul>
+    </nav>
+
+    <main class="main">
+        <section class="intro">
+            <h2>About shoPIN</h2>
+            <p>
+                Welcome to shoPIN! We make online shopping simple
+                and enjoyable. Discover a variety of products,
+                from fashion and electronics to home essentials,
+                all in one place.
+            </p>
+
+            <a href="./ShopPage(Shopping).html" class="shopBtn">
+                Start Shopping
+            </a>
+        </section>
+
+        <section class="features">
+            <div class="feature">
+                <h3>🛍️ Our Products</h3>
+                <p>Explore fashion, electronics and useful products for your home.</p>
+            </div>
+
+            <div class="feature">
+                <h3>✨ Our Goal</h3>
+                <p>To make your online shopping experience easy and enjoyable.</p>
+            </div>
+
+            <div class="feature">
+                <h3>🤎 Why shoPIN?</h3>
+                <p>A simple website where you can discover different products in one place.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 shoPIN. All rights reserved.</p>
+    </footer>
+</body>
+</html>

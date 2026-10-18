@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>shoPIN Sign Up</title>
     <style>
         * {
             padding: 0;
@@ -129,21 +129,21 @@
             justify-content: space-between;
         }
 
-        .myForm h2{
+        .myForm h2 {
             color: rgb(177, 104, 45);
         }
-        
-        .myForm p{
+
+        .myForm p {
             font-size: 14px;
             color: grey;
         }
 
-        .myForm p a{
+        .myForm p a {
             color: rgb(177, 104, 45);
             text-decoration: underline;
         }
 
-        .myForm button{
+        .myForm button {
             background-color: rgb(177, 104, 45);
             color: white;
             padding: 10px;
@@ -152,7 +152,7 @@
             width: 100%;
         }
 
-        .myForm button:hover{
+        .myForm button:hover {
             background-color: rgb(202, 141, 92);
         }
 
@@ -164,10 +164,35 @@
             border-radius: 10px;
         }
 
-        .content input{
+        .content input {
             padding: 15px;
             border-radius: 8px;
             border: 1px solid grey;
+        }
+
+        .basliq a {
+            text-decoration: none;
+            color: grey;
+            color: inherit;
+        }
+
+          #signUp {
+            background-color: #dba67a;
+            padding: 6px 8px;
+            border-radius: 20px;
+            color: white; 
+        }
+
+         li {
+            padding: 4px;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+            text-align: center;
+        }
+
+        li:hover {
+            background-color: rgb(187, 183, 180);
+
         }
 
     </style>
@@ -192,8 +217,10 @@
                 <div class="navList">
                     <ul>
                         <li><a href="./HomePage(Shopping).html">Home</a></li>
-                        <li><a href="./SignUpPage(Shopping).html">Sign up</a></li>
+                        <li id="signUp"><a href="./SignUpPage(Shopping).html">Sign up</a></li>
                         <li><a href="./ShopPage(Shopping).html">Shop</a></li>
+                        <li><a href="./About(Shopping).html">About Us</a></li>
+                        <li><a href="./Contact(Shopping).html">Contact Us</a></li>
                         <li><input type="text" placeholder="Search"></li>
                         <li><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
 
@@ -211,8 +238,8 @@
 
                     <input type="text" placeholder="Full Name" required>
                     <input type="email" placeholder="Email" required>
-                    <input type="password" placeholder="Password" required>
-                    <input type="password" placeholder="Confirm Password" required>
+                    <input type="password" id="pass1" placeholder="Password" required>
+                    <input type="password" id="pass2" placeholder="Confirm Password" required>
                     <button type="submit">Sign Up</button>
                 </form>
             </div>
@@ -237,6 +264,48 @@
                 }
             });
         });
+
+        let inpName = document.querySelector('.content input[type="text"]');
+        let inpEmail = document.querySelector('input[type="email"]');
+        let inpPass = document.getElementById('pass1');
+        let inpPass2 = document.getElementById('pass2');
+
+        let SignUpBtn = document.querySelector('button[type="submit"]');
+
+        SignUpBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            if (inpName.value.trim() === "" ||
+             inpEmail.value.trim() === "" ||
+              inpPass.value === "" ||
+               inpPass2.value === "") {
+                alert("Please fill in all fields correctly");
+            } else if (inpPass.value !== inpPass2.value) {
+                alert("Passwords do not match");
+            }else if (!isNaN(inpName.value)) {
+                alert("Please enter a valid name");
+            } else if (!inpEmail.value.includes("@")) {
+                alert("Please enter a valid email");
+            } else {
+                alert("Sign up successful!");
+                document.querySelector('.content form').reset();
+                localStorage.setItem("userData", JSON.stringify({
+                    name: inpName.value,
+                    email: inpEmail.value,
+                    password: inpPass.value
+                }));
+
+                window.location.href = "./LoginPage(Shopping).html";
+            }
+
+        })
+
+        // localStorage.setItem({
+        //     name: inpName.value,
+        //     email: inpEmail.value,
+        //     password: inpPass.value
+        // });   
+         
+
     </script>
 </body>
 

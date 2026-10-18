@@ -4,8 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>shoPIN Home Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <style>
         * {
@@ -14,8 +16,9 @@
             box-sizing: border-box;
         }
 
-        .container {
+        .main-container {
             min-height: 100vh;
+            width: 100%;
             background-color: rgb(245, 239, 236);
             display: flex;
             flex-direction: column;
@@ -64,14 +67,23 @@
         .basliq a {
             text-decoration: none;
             color: grey;
+            color: inherit;
         }
 
         #LogInA {
-            background-color: rgb(177, 104, 45);
+            background-color: #70452b;
             color: white;
             padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: underline;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        #LogInA:hover {
+            background-color: #9a6743;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
         }
 
         img {
@@ -95,7 +107,7 @@
             justify-content: space-between;
             flex-direction: row;
             background-color: white;
-            height: 300px;
+            height: 500px;
             width: 65%;
             border-radius: 10px;
             margin-top: 20px;
@@ -129,12 +141,12 @@
         .contentFlex {
             display: flex;
             justify-content: center;
+            gap: 20px;
 
-            height: 80vh;
         }
 
         .footer {
-            background-color: rgb(182, 136, 98);
+            background-color: rgb(156, 111, 75);
             padding: 20px;
             text-align: center;
             color: white;
@@ -170,7 +182,7 @@
         }
 
         .loader p {
-            color: rgb(177, 104, 45);
+            color: #b1682d;
             font-size: 17px;
         }
 
@@ -183,18 +195,59 @@
                 transform: rotate(360deg);
             }
         }
+
+        #home {
+            background-color: #b9733a;
+            padding: 6px 10px;
+            padding-top: 8px;
+            padding-bottom: 0px;
+            border-radius: 20px;
+            color: white;
+        }
+
+        #home a {
+            color: white;
+            padding: 0px;
+        }
+
+
+
+        li {
+           
+            border-radius: 20px;
+            transition: background-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        li:hover {
+            text-decoration: underline;
+            transform: translateY(-2px);
+
+        }
+
+        .carousel {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .carousel .carousel-item img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
     </style>
 </head>
 
 <body>
 
-     <div class="loader" id="loader">
+    <div class="loader" id="loader">
         <div class="spinner"></div>
         <p>shoPIN is loading...</p>
     </div>
 
 
-    <div class="container">
+    <div class="main-container">
 
         <div class="basliq">
             <div class="header">Welcome us new shopping site</div>
@@ -206,12 +259,14 @@
 
                 <div class="navList">
                     <ul>
-                        <li><a href="./HomePage(Shopping).html">Home</a></li>
+                        <li id="home"><a href="./HomePage(Shopping).html">Home</a></li>
                         <li><a href="./SignUp(Shopping).html">Sign up</a></li>
                         <li><a href="./ShopPage(Shopping).html">Shop</a></li>
+                        <li><a href="./Contact(Shopping).html">Contact Us</a></li>
+                        <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
                         <li><input type="text" placeholder="Search"></li>
-                        <li><a href=""><i class="fa-solid fa-cart-shopping"></i></a></li>
-                        <li><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+                        <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                        <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
 
                     </ul>
                 </div>
@@ -231,6 +286,33 @@
 
 
             </div>
+        
+
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" class="d-block w-100"
+                        alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" class="d-block w-100"
+                        alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" alt="...">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
         </div>
 
         <div class="footer">
@@ -239,12 +321,16 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
     <script>
+
 
         let loader = document.getElementById("loader");
         window.addEventListener("load", function () {
             loader.classList.add("hide");
-        }); 
+        });
 
         document.addEventListener("DOMContentLoaded", function () {
             const navLinks = document.querySelectorAll(".navList ul li a");

@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>shoPin Shopping Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <style>
         * {
             padding: 0;
@@ -62,6 +63,7 @@
         .basliq a {
             text-decoration: none;
             color: grey;
+            color: inherit;
         }
 
         #LogInA {
@@ -198,6 +200,11 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .card button:hover {
+            background-color: rgb(202, 141, 92);
         }
 
 
@@ -240,6 +247,47 @@
                 transform: rotate(360deg);
             }
         }
+
+        .icon {
+            font-size: larger;
+        }
+
+        #shop {
+            background-color: #b9733a;
+            padding: 6px 10px;
+            padding-top: 8px;
+            padding-bottom: 0px;
+            border-radius: 20px;
+            color: white;
+        }
+
+        #shop a {
+            color: white;
+            padding: 0px;
+        }
+
+        .categoryUl {
+            text-decoration: none;
+        }
+
+        li {
+            border-radius: 20px;
+            transition: background-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        li:hover {
+            text-decoration: underline;
+            transform: translateY(-2px);
+
+        }
+
+        .footer {
+            background-color: rgb(156, 111, 75);
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
     </style>
 </head>
 
@@ -262,11 +310,15 @@
 
                 <div class="navList">
                     <ul>
-                        <li><a href="./HomePage(Shopping).html">Home</a></li>
-                        <li><a href="./SignUp(Shopping).html">Sign up</a></li>
-                        <li><a href="./ShopPage(Shopping).html">Shop</a></li>
-                        <li><input type="text" placeholder="Search"></li>
-                        <li><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+                        <li id="home"><a href="./HomePage(Shopping).html">Home</a></li>
+                        <li id="signUp"><a href="./SignUp(Shopping).html">Sign up</a></li>
+                        <li id="shop"><a href="./ShopPage(Shopping).html">Shop</a></li>
+                        <li id="about"><a href="./About(Shopping).html">About Us</a></li>
+                        <li id="contact"><a href="./Contact(Shopping).html">Contact Us</a></li>
+                        <li id="search"><input type="text" placeholder="Search"></li>
+                        <li id="basket"><a href="./Basket(Shopping).html"><i
+                                    class="fa-solid fa-cart-shopping icon"></i></a></li>
+                        <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
 
                     </ul>
                 </div>
@@ -289,7 +341,7 @@
         </div>
 
         <div class="category">
-            <ul>
+            <ul class="categoryUl">
                 <li id="all"><a href="">🛍️All</a></li>
                 <li id="electronics"><a href="">⚡Electronics</a></li>
                 <li id="wear"><a href="">👕Wear</a></li>
@@ -301,8 +353,11 @@
 
 
         </div>
+        <footer class="footer">
+            <p>&copy; 2026 shoPIN. All rights reserved.</p>
+        </footer>
     </div>
-    </div>
+
 
     <script>
 
@@ -391,24 +446,37 @@
 
         let cardsDiv = document.querySelector('.cards');
 
-        for (let card in cards) {
-            let cardData = cards[card];
-            let cardHTML = `
+        function showCards(category) {
+            cardsDiv.innerHTML = "";
+
+            for (let card in cards) {
+                let cardData = cards[card];
+
+                if (category === "all" || cardData.category === category) {
+                    cardsDiv.innerHTML += `
                 <div class="card">
                     <img src="${cardData.img}" alt="${cardData.title}">
                     <h3>${cardData.title}</h3>
                     <span>${cardData.description}</span>
                     <p>$${cardData.price}</p>
-                    <button>Add to Cart</button>
+                    <button data-id="${card}">Add to Cart</button>
                 </div>
             `;
-            cardsDiv.innerHTML += cardHTML;
+                }
+            }
         }
+
+        document.querySelector("#all").onclick = () => showCards("all");
+        document.querySelector("#electronics").onclick = () => showCards("electronics");
+        document.querySelector("#wear").onclick = () => showCards("wear");
+        document.querySelector("#home-essentials").onclick = () => showCards("home-essentials");
 
         let all = document.getElementById('all');
         let electronics = document.getElementById('electronics');
         let wear = document.getElementById('wear');
         let homeEssentials = document.getElementById('home-essentials');
+
+
 
         all.addEventListener('click', function (event) {
             event.preventDefault();
@@ -444,6 +512,20 @@
                 }
             });
         });
+
+        let addButtons = document.querySelectorAll('.card button');
+        addButtons.forEach((button,) => {
+            button.addEventListener('click', () => {
+                let cardId = button.dataset.id;
+                let cardData = cards[cardId];
+                let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+                cartItems.push(cardData);
+                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                alert(`${cardData.title} has been added to your cart!`);
+            });
+        });
+
+
     </script>
 
 </body>

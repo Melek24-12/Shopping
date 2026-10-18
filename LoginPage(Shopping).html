@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page / Home page </title>
+    <title> shoPin Login Page  </title>
     <style>
         * {
             margin: 0;
@@ -64,26 +64,36 @@
             text-decoration: none;
             color: grey;
         }
-        #LogInA{
-            background-color: rgb(177, 104, 45);
+       #LogInA {
+            background-color: #70452b;
             color: white;
             padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: underline;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
         }
 
+        #LogInA:hover {
+            background-color: #9a6743;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
+        }
         .content {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 80vh;
+            
         }
 
         form{
             background-color: white;
+            height: 300px;
             padding: 20px;
             border-radius: 5px;
             box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+            padding: 20px;
         }
 
         .log-in{
@@ -98,6 +108,9 @@
         form input{
             padding: 8px;
             font-family: monospace;
+             padding: 15px;
+            border-radius: 8px;
+            border: 1px solid grey;
         }
 
         form button{
@@ -106,6 +119,24 @@
             color: white;
             border: none;
             border-radius: 5px;
+        }
+
+        .login{
+            color: grey;
+        }
+
+         
+
+         li {
+            border-radius: 20px;
+            transition: background-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        li:hover {
+            text-decoration: underline;
+            transform: translateY(-2px);
+
         }
         
     </style>
@@ -122,11 +153,13 @@
 
             <div class="navList">
                 <ul>
-                    <li><a href="./HomePage(Shopping).html">Home</a></li>
-                    <li><a href="./SignUp(Shopping).html">Sign up</a></li>
-                    <li><a href="./ShopPage(Shopping).html">Shop</a></li>
-                    <li><input type="text" placeholder="Search"></li>
-                    <li><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+                    <li id="home"><a href="./HomePage(Shopping).html">Home</a></li>
+                    <li id="signUp"><a href="./SignUp(Shopping).html">Sign up</a></li>
+                    <li id="shop"><a href="./ShopPage(Shopping).html">Shop</a></li>
+                    <li id="about"><a href="./About(Shopping).html">About Us</a></li>
+                    <li id="contact"><a href="./Contact(Shopping).html">Contact Us</a></li>
+                    <li id="search"><input type="text" placeholder="Search"></li>
+                    <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
 
                 </ul>
             </div>
@@ -154,12 +187,25 @@
 
         LogInBtn.addEventListener('click', function (e) {
             e.preventDefault();
-            if(!isNaN(inpName.value) || inpName.value === "" || inpPass.value === "") {
+            if(!isNaN(inpName.value) || inpName.value.trim() === "" || inpPass.value.trim() === "") {
                 alert("Please fill in all fields correctly");
             }
            
         })
 
+        if(localStorage.getItem("userData")) {
+            let userData = JSON.parse(localStorage.getItem("userData"));
+            if(inpName.value === userData.name && inpPass.value === userData.password) {
+                alert("Log in successful!");
+                window.location.href = "./HomePage(Shopping).html";
+            } else {
+                alert("Invalid username or password");
+            }
+        } else {
+            alert("No user data found. Please sign up first.");
+        }
+
+       
         
     </script>
 </body> 
