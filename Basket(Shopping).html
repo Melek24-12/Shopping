@@ -66,22 +66,47 @@
         }
 
         #LogInA {
-            background-color: rgb(177, 104, 45);
+            background-color: #70452b;
             color: white;
             padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: underline;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
         }
 
+        #LogInA:hover {
+            background-color: #9a6743;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
+        }
+
+        #basket {
+            background-color: #b9733a;
+            padding: 6px 10px;
+            padding-top: 8px;
+            padding-bottom: 0px;
+            border-radius: 20px;
+            color: white;
+        }
+
+        #basket a {
+            color: white;
+            padding: 0px;
+        }
+
+
+
         li {
-            padding: 4px;
-            border-radius: 10px;
-            transition: background-color 0.3s ease;
-            text-align: center;
+
+            border-radius: 20px;
+            transition: background-color 0.3s ease,
+                transform 0.3s ease;
         }
 
         li:hover {
-            background-color: rgb(187, 183, 180);
+            text-decoration: underline;
+            transform: translateY(-2px);
 
         }
 
@@ -254,12 +279,6 @@
             }
         }
 
-        #basket {
-            background-color: #dba67a;
-            padding: 8px;
-            border-radius: 20px;
-            color: white;
-        }
 
         .icon {
             color: white;
@@ -344,13 +363,15 @@
         <div class="cards">
 
             <div class="tottalPrice">
-
+                <p>Total Price: $0.00</p>
             </div>
         </div>
     </div>
 
     </div>
     <script>
+
+        updateTotalPrice();
 
         let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
@@ -368,6 +389,26 @@
             let card = document.createElement('div');
             card.classList.add('card');
 
+            let quantityValue = card.querySelector(".quantity span");
+
+            card.querySelector(".plus").addEventListener("click", function () {
+                item.quantity = (item.quantity || 1) + 1;
+                quantityValue.textContent = item.quantity;
+
+                localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                updateTotalPrice();
+            });
+
+            card.querySelector(".minus").addEventListener("click", function () {
+                if ((item.quantity || 1) > 1) {
+                    item.quantity--;
+                    quantityValue.textContent = item.quantity;
+
+                    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                    updateTotalPrice();
+                }
+            });
+
             if (!item.img || !item.title || !item.price || !item.description) {
                 console.error('Invalid item data:', item);
                 return;
@@ -379,34 +420,57 @@
             }
 
 
+
             card.innerHTML = `
-                <img src="${item.img}" alt="${item.title}">
-                <h3>${item.title}</h3>
-                <p>${item.price}</p>
-                <span>${item.description}</span>
-                <button class="remove-btn">Remove</button>
+              <img src="${item.img}" alt="${item.title}">
+             <h3>${item.title}</h3>
+          <span>${item.description}</span>
+         <p class="item-price">$${item.price}</p>
+
+    <div class="quantity">
+        <button class="minus">−</button>
+        <span>${item.quantity || 1}</span>
+        <button class="plus">+</button>
+    </div>
+
+    <button class="remove-btn">Remove</button>
             `;
 
             document.querySelector('.cards').appendChild(card);
 
+
+
             let removeBtn = card.querySelector('.remove-btn');
             removeBtn.addEventListener('click', function () {
-                cartItems = cartItems.filter(cartItem => cartItem.title !== item.title);
+                cartItems = cartItems.filter(
+                    cartItem => cartItem !== item
+                );
+
                 localStorage.setItem('cartItems', JSON.stringify(cartItems));
                 card.remove();
+
             });
+
+            updateTotalPrice();
         });
 
         let totalPrice = 0
         cartItems.forEach((item) => {
-            let price = parseFloat(item.price);
-            totalPrice += price;
+
+            totalPrice += item.price;
         });
 
 
-        let totalPriceElement = document.createElement('p');
+        function updateTotalPrice() {
+            let totalPrice = 0;
+
+            let totalPriceElement = document.querySelector('.tottalPrice p');
+            totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+        }
+
+        let totalPriceElement = document.querySelector('.tottalPrice p');
         totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
-        document.querySelector('.tottalPrice').appendChild(totalPriceElement);
+
 
     </script>
 </body>

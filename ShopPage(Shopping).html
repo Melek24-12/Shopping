@@ -255,8 +255,8 @@
         #shop {
             background-color: #b9733a;
             padding: 6px 10px;
-            padding-top: 8px;
-            padding-bottom: 0px;
+            padding-top: 5px;
+            padding-bottom: 5px;
             border-radius: 20px;
             color: white;
         }
@@ -264,6 +264,7 @@
         #shop a {
             color: white;
             padding: 0px;
+            padding-bottom: 5px;
         }
 
         .categoryUl {
@@ -282,11 +283,20 @@
 
         }
 
+        .categoryUl li {
+            background-color: rgb(182, 118, 76);
+            border: 1px solid rgb(177, 104, 45);
+            border-radius: 10px;
+            padding: 5px 10px;
+            gap: 10px;
+        }
+
         .footer {
             background-color: rgb(156, 111, 75);
             padding: 20px;
             text-align: center;
             color: white;
+            margin-top: auto;
         }
     </style>
 </head>
@@ -440,7 +450,89 @@
                 price: 110,
                 description: "Modern keyboard with a comfortable design for work and gaming.",
                 category: "electronics"
+            },
+
+            card11: {
+                img: "https://images.unsplash.com/photo-1576566588028-4147f3842f27",
+                title: "T-Shirt",
+                price: 45,
+                description: "Soft and comfortable T-shirt for everyday wear.",
+                category: "wear"
+            },
+
+            card12: {
+                img: "https://images.unsplash.com/photo-1549298916-b41d501d3772",
+                title: "Shoes",
+                price: 180,
+                description: "Casual shoes with a modern and comfortable design.",
+                category: "wear"
+            },
+
+            card13: {
+                img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
+                title: "Handbag",
+                price: 95,
+                description: "Elegant handbag perfect for daily use and special occasions.",
+                category: "wear"
+            },
+
+            card14: {
+                img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+                title: "Wireless Earbuds",
+                price: 85,
+                description: "Compact wireless earbuds with clear and balanced sound.",
+                category: "electronics"
+            },
+
+            card15: {
+                img: "https://images.unsplash.com/photo-1527814050087-3793815479db",
+                title: "Computer Mouse",
+                price: 35,
+                description: "Responsive computer mouse for studying, work, and gaming.",
+                category: "electronics"
+            },
+
+            card16: {
+                img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c",
+                title: "Desk Lamp",
+                price: 60,
+                description: "Modern desk lamp that provides comfortable lighting.",
+                category: "home-essentials"
+            },
+
+            card17: {
+                img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6",
+                title: "Decorative Vase",
+                price: 40,
+                description: "Beautiful decorative vase to brighten up your home.",
+                category: "home-essentials"
+            },
+
+            card18: {
+                img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+                title: "Bookshelf",
+                price: 280,
+                description: "Practical bookshelf for organizing books and decorations.",
+                category: "home-essentials"
+            },
+
+            card19: {
+                img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab",
+                title: "Hoodie",
+                price: 75,
+                description: "Warm and cozy hoodie suitable for casual outfits.",
+                category: "wear"
+            },
+
+            card20: {
+                img: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+                title: "Laptop",
+                price: 1500,
+                description: "Portable laptop for studying, working, and everyday tasks.",
+                category: "electronics"
             }
+
+
 
         }
 
@@ -465,6 +557,8 @@
                 }
             }
         }
+
+        showCards("all");
 
         document.querySelector("#all").onclick = () => showCards("all");
         document.querySelector("#electronics").onclick = () => showCards("electronics");
@@ -513,16 +607,19 @@
             });
         });
 
-        let addButtons = document.querySelectorAll('.card button');
-        addButtons.forEach((button,) => {
-            button.addEventListener('click', () => {
-                let cardId = button.dataset.id;
+        cardsDiv.addEventListener("click", function (event) {
+            if (event.target.tagName === "BUTTON") {
+                let cardId = event.target.dataset.id;
                 let cardData = cards[cardId];
-                let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+                let cartItems =
+                    JSON.parse(localStorage.getItem("cartItems")) || [];
+
                 cartItems.push(cardData);
-                localStorage.setItem('cartItems', JSON.stringify(cartItems));
+                localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
                 alert(`${cardData.title} has been added to your cart!`);
-            });
+            }
         });
 
 
