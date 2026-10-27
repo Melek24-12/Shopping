@@ -94,15 +94,15 @@
             border-radius: 10px;
         }
 
-        .cont2 {
+        /* .cont2 {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-right: 100px;
             margin-bottom: 20px;
-        }
+        } 
 
-        .content {
+            .content {
             display: flex;
             justify-content: space-between;
             flex-direction: row;
@@ -136,28 +136,22 @@
         .content button a {
             text-decoration: none;
             color: white;
-        }
+        } */
 
         .contentFlex {
             display: flex;
             justify-content: space-around;
+            flex-direction: column;
             gap: 20px;
             padding: 20px;
 
         }
 
-        .footer {
-            background-color: rgb(156, 111, 75);
-            padding: 20px;
-            text-align: center;
-            color: white;
-            margin-top: auto;
-        }
-
+        
         .nav i {
             font-size: 25px;
         }
-
+        
         .loader {
             position: fixed;
             top: 0;
@@ -214,7 +208,7 @@
 
 
         li {
-           
+            color: grey;
             border-radius: 20px;
             transition: background-color 0.3s ease,
                 transform 0.3s ease;
@@ -237,6 +231,257 @@
             object-fit: cover;
             border-radius: 10px;
         }
+
+        #title {
+
+            margin-bottom: 20px;
+            border-left: 5px solid #b1682d;
+            padding-left: 10px;
+        }
+
+        .collection {
+            padding: 25px 5%;
+        }
+
+
+
+        .collection-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .collection-card {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .collection-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 180px;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+        .collection-card h3 {
+            font-size: 17px;
+            margin-top: 10px;
+        }
+
+        .collection-card span {
+            display: block;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .collection-card p {
+            font-weight: bold;
+            color: #b1682d;
+        }
+
+        .collection-card a {
+            display: inline-block;
+            background-color: #b1682d;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+
+        .collection-card a:hover {
+            background-color: #70452b;
+        }
+
+        @media (max-width: 600px) {
+            .collection-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+        .promotion {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #ffdda0;
+            margin: 20px 0;
+            min-height: 280px;
+            overflow: hidden;
+        }
+        
+        .promotion-text {
+            padding: 30px 5%;
+            width: 50%;
+        }
+
+        .promotion-text span {
+            color: #b1682d;
+            font-weight: bold;
+        }
+
+        .promotion-text h2 {
+            font-size: 30px;
+            margin: 15px 0;
+        }
+
+        .promotion-text p {
+            color: #555;
+        }
+
+        .promotion-text a {
+            display: inline-block;
+            background-color: #b1682d;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .promotion-text a:hover {
+            background-color: #70452b;
+        }
+
+        .promotion-image {
+            width: 50%;
+            height: 280px;
+            padding-right: 8px;
+        }
+
+        .promotion-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        @media (max-width: 600px) {
+            .promotion {
+                flex-direction: column;
+            }
+
+            .promotion-text,
+            .promotion-image {
+                width: 100%;
+            }
+        }
+
+        .countdown {
+            display: flex;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .countdown div {
+            background-color: white;
+            padding: 10px;
+            min-width: 60px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .countdown span {
+            font-size: 22px;
+            font-weight: bold;
+            color: #b1682d;
+        }
+
+        .countdown p {
+            font-size: 12px;
+            margin: 5px 0 0;
+        }
+
+        .special-promotion h2 {
+            margin: 20px 0;
+        }
+
+        .special-promotion img {
+            width: 100%;
+        }
+        
+        .footer {
+            background-color: #70452b;
+            color: white;
+            padding: 35px 5% 15px;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 130px;
+        }
+
+        .footer-section h2 {
+            font-size: 28px;
+        }
+
+        .footer-section h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            max-width: 220px;
+        }
+
+        .footer-section a {
+            color: #f5efec;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffdda0;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons i {
+            font-size: 23px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin-top: 25px;
+            padding-top: 15px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 25px;
+            }
+        }
     </style>
 </head>
 
@@ -248,7 +493,7 @@
     </div>
 
 
-    <div class="main-container">
+    <di class="main-container">
 
         <div class="basliq">
             <div class="header">Welcome us new shopping site</div>
@@ -275,7 +520,7 @@
         </div>
 
         <div class="contentFlex">
-            <div class="content">
+            <!-- <div class="content">
                 <div class="cont1">
                     <h2>Start shopping <br> with new style</h2><button><a href="./ShopPage(Shopping).html">Shop
                             Now</a></button>
@@ -286,67 +531,232 @@
                         alt="shopping img"> </div>
 
 
+            </div> -->
+
+
+            <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" class="d-block w-100"
+                            alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" class="d-block w-100"
+                            alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853" alt="...">
+                    </div>
+                     
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-        
 
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" class="d-block w-100"
-                        alt="...">
+
+            <section class="collection">
+                <h2 id="title">Shop Collection</h2>
+
+                <div class="collection-cards">
+
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" alt="Headphones">
+                        <h3>Headphones</h3>
+                        <span>Wireless headphones with clear sound and comfortable design.</span>
+                        <p>$100</p>
+                        <a href="./ShopPage(Shopping).html">View Product</a>
+                    </div>
+
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30" alt="Watch">
+                        <h3>Watch</h3>
+                        <span>Elegant wristwatch with a sleek design and durable strap.</span>
+                        <p>$150</p>
+                        <a href="./ShopPage(Shopping).html">View Product</a>
+                    </div>
+
+                    <div class="collection-card">
+                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772" alt="Shoes">
+                        <h3>Shoes</h3>
+                        <span>Comfortable shoes with a modern design and high-quality materials.</span>
+                        <p>$80</p>
+                        <a href="./ShopPage(Shopping).html">View Product</a>
+                    </div>
+
                 </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" class="d-block w-100"
-                        alt="...">
+            </section>
+
+
+            <h2 id="title">Promotion</h2>
+            <section class="promotion">
+
+                <div class="promotion-text">
+                    <span>Special Offer</span>
+                    <h2>Hurry Up! 40% OFF</h2>
+                    <p>Discover amazing products at special prices.</p>
+
+                    <div class="countdown">
+                        <div>
+                            <span id="days">00</span>
+                            <p>Days</p>
+                        </div>
+
+                        <div>
+                            <span id="hours">00</span>
+                            <p>Hours</p>
+                        </div>
+
+                        <div>
+                            <span id="minutes">00</span>
+                            <p>Minutes</p>
+                        </div>
+
+                        <div>
+                            <span id="seconds">00</span>
+                            <p>Seconds</p>
+                        </div>
+                    </div>
+
+                    <a href="./ShopPage(Shopping).html">Shop Now</a>
                 </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e" alt="...">
+
+                <div class="promotion-image">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b" alt="Shopping promotion">
                 </div>
+            </section>
+
+            <section class="special-promotion">
+                <h2 id="title">Special Promotion</h2>
+                <img src="https://img.youtube.com/vi/2gYqEi8-am4/maxresdefault.jpg" alt="">
+
+            </section>
+
+        </div>
+
+
+
+
+        <footer class="footer">
+
+            <div class="footer-container">
+
+                <div class="footer-section">
+                    <h2>shoPIN</h2>
+                    <p>Your favorite online shopping destination.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <a href="./About(Shopping).html">About Us</a>
+                    <a href="./Contact(Shopping).html">Contact Us</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">FAQ</a>
+                    <a href="#">Shipping Information</a>
+                    <a href="#">Return Policy</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="./HomePage(Shopping).html">Home</a>
+                    <a href="./ShopPage(Shopping).html">Shop</a>
+                    <a href="./SignUp(Shopping).html">Sign Up</a>
+                    <a href="./Basket(Shopping).html">My Basket</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <a href="#" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 shoPIN. All rights reserved.</p>
+            </div>
+
+        </footer>
+
+
         </div>
 
-        <div class="footer">
-
-            <p>&copy; 2023 shoPIN. All rights reserved.</p>
-        </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-    <script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+            crossorigin="anonymous"></script>
+        <script>
 
 
-        let loader = document.getElementById("loader");
-        window.addEventListener("load", function () {
-            loader.classList.add("hide");
-        });
+            let loader = document.getElementById("loader");
+            window.addEventListener("load", function () {
+                loader.classList.add("hide");
+            });
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const navLinks = document.querySelectorAll(".navList ul li a");
-            navLinks.forEach(link => {
-                link.addEventListener("click", function (event) {
-                    event.preventDefault();
-                    const targetUrl = this.getAttribute("href");
-                    loader.classList.remove("hide");
-                    setTimeout(() => {
-                        window.location.href = targetUrl;
-                    }, 1000);
+            document.addEventListener("DOMContentLoaded", function () {
+                const navLinks = document.querySelectorAll(".navList ul li a");
+                navLinks.forEach(link => {
+                    link.addEventListener("click", function (event) {
+                        event.preventDefault();
+                        const targetUrl = this.getAttribute("href");
+                        loader.classList.remove("hide");
+                        setTimeout(() => {
+                            window.location.href = targetUrl;
+                        }, 1000);
+                    });
                 });
             });
-        });
-    </script>
+
+
+            const endDate = new Date();
+            endDate.setDate(endDate.getDate() + 3);
+
+            function updateCountdown() {
+                const now = new Date();
+                const difference = endDate - now;
+
+                if (difference <= 0) return;
+
+                document.getElementById("days").textContent =
+                    Math.floor(difference / (1000 * 60 * 60 * 24));
+
+                document.getElementById("hours").textContent =
+                    Math.floor((difference / (1000 * 60 * 60)) % 24);
+
+                document.getElementById("minutes").textContent =
+                    Math.floor((difference / (1000 * 60)) % 60);
+
+                document.getElementById("seconds").textContent =
+                    Math.floor((difference / 1000) % 60);
+            }
+
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+
+        </script>
 </body>
 
 </html>

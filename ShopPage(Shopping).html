@@ -127,27 +127,30 @@
 
         .category {
             margin-top: 20px;
+            width: 40%;
         }
 
         .category ul {
             list-style: none;
             display: flex;
             justify-content: space-around;
+            width: fit-content;
+            gap: 10px;
 
         }
 
         .category li {
-            background-color: rgb(182, 118, 76);
-            border: 1px solid rgb(177, 104, 45);
+            color: black;
+
             border-radius: 10px;
             padding: 5px 10px;
-            gap: 10px;
+
 
         }
 
         .category li a {
             text-decoration: none;
-            color: rgb(255, 255, 255);
+            color: inherit
         }
 
         .cards {
@@ -156,10 +159,11 @@
             gap: 20px;
             margin-top: 30px;
             flex-wrap: wrap;
+            width: 70%;
         }
 
         .card {
-            width: 250px;
+            width: 200px;
             background-color: white;
             border-radius: 10px;
             padding: 15px;
@@ -168,8 +172,8 @@
         }
 
         .card img {
-            width: 200px;
-            height: 200px;
+            width: 95%;
+            height: 55%;
             object-fit: cover;
             margin: 0;
             padding: 0;
@@ -267,11 +271,9 @@
             padding-bottom: 5px;
         }
 
-        .categoryUl {
-            text-decoration: none;
-        }
 
         li {
+            color: grey;
             border-radius: 20px;
             transition: background-color 0.3s ease,
                 transform 0.3s ease;
@@ -283,8 +285,17 @@
 
         }
 
+        .categoryUl {
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            background-color: #fff;
+            padding: 10px;
+            width: 40%;
+        }
+
         .categoryUl li {
-            background-color: rgb(182, 118, 76);
+
             border: 1px solid rgb(177, 104, 45);
             border-radius: 10px;
             padding: 5px 10px;
@@ -292,11 +303,86 @@
         }
 
         .footer {
-            background-color: rgb(156, 111, 75);
-            padding: 20px;
-            text-align: center;
+            background-color: #70452b;
             color: white;
+            padding: 35px 5% 15px;
             margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 130px;
+        }
+
+        .footer-section h2 {
+            font-size: 28px;
+        }
+
+        .footer-section h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            max-width: 220px;
+        }
+
+        .footer-section a {
+            color: #f5efec;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffdda0;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons i {
+            font-size: 23px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin-top: 25px;
+            padding-top: 15px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 25px;
+            }
+        }
+
+        .products {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            gap: 30px;
+            padding: 20px;
         }
     </style>
 </head>
@@ -350,21 +436,75 @@
 
         </div>
 
-        <div class="category">
-            <ul class="categoryUl">
-                <li id="all"><a href="">🛍️All</a></li>
-                <li id="electronics"><a href="">⚡Electronics</a></li>
-                <li id="wear"><a href="">👕Wear</a></li>
-                <li id="home-essentials"><a href="">🏠Home Essentials</a></li>
-            </ul>
+        <div class="products">
+            <div class="category">
+                <ul class="categoryUl">
+                    <li id="all"><a href="">All</a></li>
+                    <li id="electronics"><a href="">Electronics</a></li>
+                    <li id="wear"><a href="">Wear</a></li>
+                    <li id="home-essentials"><a href="">Home Essentials</a></li>
+                </ul>
+            </div>
+
+            <div class="cards">
+
+
+            </div>
         </div>
 
-        <div class="cards">
-
-
-        </div>
         <footer class="footer">
-            <p>&copy; 2026 shoPIN. All rights reserved.</p>
+
+            <div class="footer-container">
+
+                <div class="footer-section">
+                    <h2>shoPIN</h2>
+                    <p>Your favorite online shopping destination.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <a href="./About(Shopping).html">About Us</a>
+                    <a href="./Contact(Shopping).html">Contact Us</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">FAQ</a>
+                    <a href="#">Shipping Information</a>
+                    <a href="#">Return Policy</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="./HomePage(Shopping).html">Home</a>
+                    <a href="./ShopPage(Shopping).html">Shop</a>
+                    <a href="./SignUp(Shopping).html">Sign Up</a>
+                    <a href="./Basket(Shopping).html">My Basket</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <a href="#" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 shoPIN. All rights reserved.</p>
+            </div>
+
         </footer>
     </div>
 
@@ -572,23 +712,11 @@
 
 
 
-        all.addEventListener('click', function (event) {
-            event.preventDefault();
-            cards.forEach(card => {
-                if (card.category === "electronics" || card.category === "wear" || card.category === "home-essentials") {
-                    cardsDiv.innerHTML += `
-                <div class="card">
-                    <img src="${card.img}" alt="${card.title}">
-                    <h3>${card.title}</h3>
-                    <span>${card.description}</span>
-                    <p>$${card.price}</p>
-                    <button>Add to Cart</button>
-                </div>
-            `;
-                }
+        document.querySelectorAll(".categoryUl a").forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
             });
         });
-
 
 
         let loader = document.getElementById("loader");
