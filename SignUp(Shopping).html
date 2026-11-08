@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shoPIN Sign Up</title>
+    
     <style>
         * {
             padding: 0;
@@ -64,7 +65,7 @@
             color: grey;
         }
 
-       
+
 
         .loader {
             position: fixed;
@@ -170,7 +171,7 @@
             color: inherit;
         }
 
-         #LogInA {
+        #LogInA {
             background-color: #70452b;
             color: white;
             padding: 10px 20px;
@@ -203,7 +204,7 @@
 
 
         li {
-           
+
             border-radius: 20px;
             transition: background-color 0.3s ease,
                 transform 0.3s ease;
@@ -215,6 +216,80 @@
 
         }
 
+         .footer {
+            background-color: #70452b;
+            color: white;
+            padding: 35px 5% 15px;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 130px;
+        }
+
+        .footer-section h2 {
+            font-size: 28px;
+        }
+
+        .footer-section h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            max-width: 220px;
+        }
+
+        .footer-section a {
+            color: #f5efec;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffdda0;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons i {
+            font-size: 23px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin-top: 25px;
+            padding-top: 15px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0;
+            font-size: 13px;
+        }
+
+        @media (max-width: 600px) {
+            .footer-container {
+                flex-direction: column;
+                gap: 25px;
+            }
+        }
 
     </style>
 </head>
@@ -257,7 +332,7 @@
                     <h2>Sign Up</h2>
                     <p>Already have an account? <a href="./LoginPage(Shopping).html">Log in</a></p>
 
-                    <input type="text" placeholder="Full Name" required>
+                    <input type="text" placeholder="Username" required>
                     <input type="email" placeholder="Email" required>
                     <input type="password" id="pass1" placeholder="Password" required>
                     <input type="password" id="pass2" placeholder="Confirm Password" required>
@@ -265,8 +340,66 @@
                 </form>
             </div>
         </div>
+
+         <footer class="footer">
+
+            <div class="footer-container">
+
+                <div class="footer-section">
+                    <h2>shoPIN</h2>
+                    <p>Your favorite online shopping destination.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <a href="./About(Shopping).html">About Us</a>
+                    <a href="./Contact(Shopping).html">Contact Us</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">FAQ</a>
+                    <a href="#">Shipping Information</a>
+                    <a href="#">Return Policy</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="./HomePage(Shopping).html">Home</a>
+                    <a href="./ShopPage(Shopping).html">Shop</a>
+                    <a href="./SignUp(Shopping).html">Sign Up</a>
+                    <a href="./Basket(Shopping).html">My Basket</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <a href="#" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 shoPIN. All rights reserved.</p>
+            </div>
+
+        </footer>
+
+
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
 
 
@@ -296,36 +429,52 @@
         SignUpBtn.addEventListener('click', function (e) {
             e.preventDefault();
             if (inpName.value.trim() === "" ||
-             inpEmail.value.trim() === "" ||
-              inpPass.value === "" ||
-               inpPass2.value === "") {
-                alert("Please fill in all fields correctly");
+                inpEmail.value.trim() === "" ||
+                inpPass.value === "" ||
+                inpPass2.value === "") {
+                Swal.fire({
+                    title: "Please fill in all fields correctly",
+                    icon: "error",
+                    draggable: true
+                });
             } else if (inpPass.value !== inpPass2.value) {
-                alert("Passwords do not match");
-            }else if (!isNaN(inpName.value)) {
-                alert("Please enter a valid name");
+                Swal.fire({
+                    title: "Passwords do not match",
+                    icon: "error",
+                    draggable: true
+                });
+            } else if (!isNaN(inpName.value)) {
+                Swal.fire({
+                    title: "Please enter a valid name",
+                    icon: "error",
+                    draggable: true
+                });
             } else if (!inpEmail.value.includes("@")) {
-                alert("Please enter a valid email");
+                Swal.fire({
+                    title: "Please enter a valid email",
+                    icon: "error",
+                    draggable: true
+                });
             } else {
-                alert("Sign up successful!");
-                document.querySelector('.content form').reset();
+               
                 localStorage.setItem("userData", JSON.stringify({
                     name: inpName.value,
                     email: inpEmail.value,
                     password: inpPass.value
                 }));
+                document.querySelector('.content form').reset();
 
-                window.location.href = "./LoginPage(Shopping).html";
+                 Swal.fire({
+                    title: "Sign Up Successful!",
+                    icon: "success",
+                    draggable: true
+                });
             }
 
         })
 
-        // localStorage.setItem({
-        //     name: inpName.value,
-        //     email: inpEmail.value,
-        //     password: inpPass.value
-        // });   
-         
+
+
 
     </script>
 </body>

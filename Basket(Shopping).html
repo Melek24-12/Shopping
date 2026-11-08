@@ -188,28 +188,85 @@
 
         .cards {
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             gap: 20px;
             margin-top: 30px;
-            flex-wrap: wrap;
+            padding-bottom: 120px;
         }
 
         .card {
-            width: 250px;
+            width: 90%;
+            min-height: 220px;
             background-color: white;
             border-radius: 10px;
             padding: 15px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 25px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
         }
 
         .card img {
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
             object-fit: cover;
             margin: 0;
             padding: 0;
             border-radius: 8px;
+        }
+
+        .card h3 {
+            min-width: 130px;
+        }
+
+        .card span {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .card .item-price {
+            font-weight: bold;
+            color: rgb(177, 104, 45);
+        }
+
+        .card .quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card .quantity span {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .card button {
+            padding: 8px 15px;
+            background-color: rgb(177, 104, 45);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #9a6743;
+        }
+
+        @media (max-width: 700px) {
+            .card {
+                width: 95%;
+                flex-wrap: wrap;
+                justify-content: center;
+                text-align: center;
+            }
+
+            .card img {
+                width: 130px;
+                height: 130px;
+            }
         }
 
         .card h3 {
@@ -360,117 +417,135 @@
             </ul>
         </div>
 
-        <div class="cards">
+        <div class="cards"></div>
 
-            <div class="tottalPrice">
-                <p>Total Price: $0.00</p>
-            </div>
+        <div class="tottalPrice">
+            <p>Total Price: $0.00</p>
         </div>
     </div>
+
 
     </div>
     <script>
 
-        updateTotalPrice();
-
         let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
 
         let loader = document.getElementById('loader');
+        let cardsContainer = document.querySelector('.cards');
 
         window.addEventListener('load', function () {
             loader.classList.add('hide');
         });
 
-
+        // Boş məlumatları səbətdən təmizləyirik
         cartItems = cartItems.filter(item => item !== null);
+
+        cartItems.forEach(item => {
+            if (!item.quantity || item.quantity < 1) {
+                item.quantity = 1;
+            }
+        });
+
         localStorage.setItem('cartItems', JSON.stringify(cartItems));
 
-        cartItems.forEach((item) => {
-            let card = document.createElement('div');
-            card.classList.add('card');
+        function showCart() {
+            cardsContainer.innerHTML = '';
 
-            let quantityValue = card.querySelector(".quantity span");
+            cartItems.forEach(item => {
 
-            card.querySelector(".plus").addEventListener("click", function () {
-                item.quantity = (item.quantity || 1) + 1;
-                quantityValue.textContent = item.quantity;
+                if (!item.img || !item.title || item.price == null || !item.description) {
+                    console.error('Invalid item data:', item);
+                    return;
+                }
 
-                localStorage.setItem("cartItems", JSON.stringify(cartItems));
-                updateTotalPrice();
-            });
+                if (typeof item.price !== 'number' || !Number.isFinite(item.price)) {
+                    console.error('Invalid price:', item);
+                    return;
+                }
 
-            card.querySelector(".minus").addEventListener("click", function () {
-                if ((item.quantity || 1) > 1) {
-                    item.quantity--;
+                let card = document.createElement('div');
+                card.classList.add('card');
+
+                card.innerHTML = `
+            <img src="${item.img}" alt="${item.title}">
+
+            <h3>${item.title}</h3>
+
+            <span>${item.description}</span>
+
+            <p class="item-price">$${item.price.toFixed(2)}</p>
+
+            <div class="quantity">
+                <button class="minus">−</button>
+                <span>${item.quantity}</span>
+                <button class="plus">+</button>
+            </div>
+
+            <button class="remove-btn">Remove</button>
+        `;
+
+                cardsContainer.appendChild(card);
+
+                // Məhsul sayını artırmaq
+                let plusBtn = card.querySelector('.plus');
+                let minusBtn = card.querySelector('.minus');
+                let quantityValue = card.querySelector('.quantity span');
+
+                plusBtn.addEventListener('click', function () {
+                    item.quantity++;
+
                     quantityValue.textContent = item.quantity;
 
-                    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-                    updateTotalPrice();
-                }
-            });
+                    saveCart();
+                });
 
-            if (!item.img || !item.title || !item.price || !item.description) {
-                console.error('Invalid item data:', item);
-                return;
-            }
+                // Məhsul sayını azaltmaq
+                minusBtn.addEventListener('click', function () {
+                    if (item.quantity > 1) {
+                        item.quantity--;
 
-            if (typeof item.price !== 'number' || isNaN(item.price)) {
-                console.error('Invalid price:', item);
-                return;
-            }
+                        quantityValue.textContent = item.quantity;
 
+                        saveCart();
+                    }
+                });
 
+                // Məhsulu səbətdən silmək
+                let removeBtn = card.querySelector('.remove-btn');
 
-            card.innerHTML = `
-              <img src="${item.img}" alt="${item.title}">
-             <h3>${item.title}</h3>
-          <span>${item.description}</span>
-         <p class="item-price">$${item.price}</p>
+                removeBtn.addEventListener('click', function () {
+                    cartItems = cartItems.filter(cartItem => cartItem !== item);
 
-    <div class="quantity">
-        <button class="minus">−</button>
-        <span>${item.quantity || 1}</span>
-        <button class="plus">+</button>
-    </div>
+                    card.remove();
 
-    <button class="remove-btn">Remove</button>
-            `;
-
-            document.querySelector('.cards').appendChild(card);
-
-
-
-            let removeBtn = card.querySelector('.remove-btn');
-            removeBtn.addEventListener('click', function () {
-                cartItems = cartItems.filter(
-                    cartItem => cartItem !== item
-                );
-
-                localStorage.setItem('cartItems', JSON.stringify(cartItems));
-                card.remove();
-
+                    saveCart();
+                });
             });
 
             updateTotalPrice();
-        });
+        }
 
-        let totalPrice = 0
-        cartItems.forEach((item) => {
+        // LocalStorage və qiyməti yeniləmək
+        function saveCart() {
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            updateTotalPrice();
+        }
 
-            totalPrice += item.price;
-        });
-
-
+        // Ümumi qiyməti hesablamaq
         function updateTotalPrice() {
             let totalPrice = 0;
 
+            cartItems.forEach(item => {
+                totalPrice += item.price * (item.quantity || 1);
+            });
+
             let totalPriceElement = document.querySelector('.tottalPrice p');
-            totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
+
+            totalPriceElement.textContent =
+                `Total Price: $${totalPrice.toFixed(2)}`;
         }
 
-        let totalPriceElement = document.querySelector('.tottalPrice p');
-        totalPriceElement.textContent = `Total Price: $${totalPrice.toFixed(2)}`;
-
+        showCart();
 
     </script>
 </body>

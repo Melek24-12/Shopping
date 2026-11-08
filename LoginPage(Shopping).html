@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> shoPin Login Page  </title>
+    <title> shoPin Login Page </title>
     <style>
         * {
             margin: 0;
@@ -42,7 +42,7 @@
             border: 1px solid grey;
         }
 
-        .navList{
+        .navList {
             display: flex;
             align-items: center;
         }
@@ -60,11 +60,12 @@
             gap: 60px;
         }
 
-        a{
+        a {
             text-decoration: none;
             color: grey;
         }
-       #LogInA {
+
+        #LogInA {
             background-color: #70452b;
             color: white;
             padding: 10px 20px;
@@ -79,15 +80,16 @@
             transform: translateY(-3px);
             box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
         }
+
         .content {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 80vh;
-            
+
         }
 
-        form{
+        form {
             background-color: white;
             height: 300px;
             padding: 20px;
@@ -96,7 +98,7 @@
             padding: 20px;
         }
 
-        .log-in{
+        .log-in {
             display: flex;
             justify-content: space-between;
             flex-direction: column;
@@ -105,15 +107,15 @@
             height: 200px;
         }
 
-        form input{
+        form input {
             padding: 8px;
             font-family: monospace;
-             padding: 15px;
+            padding: 15px;
             border-radius: 8px;
             border: 1px solid grey;
         }
 
-        form button{
+        form button {
             padding: 10px;
             background-color: rgb(177, 104, 45);
             color: white;
@@ -121,13 +123,13 @@
             border-radius: 5px;
         }
 
-        .login{
+        .login {
             color: grey;
         }
 
-         
 
-         li {
+
+        li {
             border-radius: 20px;
             transition: background-color 0.3s ease,
                 transform 0.3s ease;
@@ -138,7 +140,6 @@
             transform: translateY(-2px);
 
         }
-        
     </style>
 </head>
 
@@ -168,8 +169,8 @@
             <form action="">
                 <div class="log-in">
                     <h2 class="logIn">Log In</h2>
-                    <input type="text" placeholder="Username">
-                    <input type="password" placeholder="Password">
+                    <input type="text" id="username" placeholder="Username">
+                    <input type="password" id="pin" placeholder="Password">
                     <button type="submit">Log In</button>
                 </div>
 
@@ -178,36 +179,57 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
 
-        let inpName = document.querySelector('input[type="text"]');
-        let inpPass = document.querySelector('input[type="password"]');
+        let inpName = document.querySelector('#username');
+        let inpPass = document.querySelector('#pin');
 
         let LogInBtn = document.querySelector('button[type="submit"]');
 
         LogInBtn.addEventListener('click', function (e) {
             e.preventDefault();
-            if(!isNaN(inpName.value) || inpName.value.trim() === "" || inpPass.value.trim() === "") {
-                alert("Please fill in all fields correctly ( or try sign up first )");
+            if (!isNaN(inpName.value) || inpName.value.trim() === "" || inpPass.value.trim() === "") {
+                Swal.fire({
+                    title: "Please enter valid username and password",
+                    icon: "error",
+                    draggable: true
+                });
             }
-           
-        })
 
-        if(localStorage.getItem("userData")) {
-            let userData = JSON.parse(localStorage.getItem("userData"));
-            if(inpName.value === userData.name && inpPass.value === userData.password) {
-                alert("Log in successful!");
-                window.location.href = "./HomePage(Shopping).html";
+
+
+            if (localStorage.getItem("userData")) {
+                let userData = JSON.parse(localStorage.getItem("userData"));
+                if (inpName.value.trim() === userData.name.trim() && inpPass.value === userData.password) {
+                    Swal.fire({
+                        title: "Log in Successful!",
+                        icon: "success",
+                        draggable: true
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Invalid username or password",
+                        icon: "error",
+                        draggable: true
+                    });
+                }
             } else {
-                alert("Invalid username or password");
+                Swal.fire({
+                    title: "No user data found. Please sign up first.",
+                    icon: "error",
+                    draggable: true
+                });
             }
-        } else {
-            alert("No user data found. Please sign up first.");
-        }
 
-       
-        
+        })
+       git status
+git add.
+git status
+git commit - m "deyisiklikler"
+git push
+
     </script>
-</body> 
+</body>
 
 </html>
