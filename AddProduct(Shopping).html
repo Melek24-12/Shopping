@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - shoPIN</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            min-height: 100vh;
+            background-color: rgb(245, 239, 236);
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: rgb(245, 239, 236);
+        }
+
+        .header {
+            background-color: rgb(177, 104, 45);
+            padding: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .nav {
+            background-color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a {
+            color: inherit;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .nav input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid grey;
+        }
+
+        .form-container {
+            width: 90%;
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
+        }
+
+        h2 {
+            color: rgb(177, 104, 45);
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: bold;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            background-color: rgb(177, 104, 45);
+            color: white;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #9a6743;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+
+        li {
+            color: grey;
+            border-radius: 20px;
+            transition: background-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        li:hover {
+            text-decoration: underline;
+            transform: translateY(-2px);
+
+        }
+
+        #LogInA {
+            background-color: #70452b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        #LogInA:hover {
+            background-color: #9a6743;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
+        }
+
+        .nav i{
+            font-size: 25px;
+        }
+
+         #addProductLi{
+            background-color: #b9733a;
+            padding: 6px 10px;
+            padding-top: 8px;
+            padding-bottom: 0px;
+            border-radius: 20px;
+            color: white;
+            
+        }
+
+        #addProductLi a {
+            color: white;
+            padding: 0px;
+        }
+
+         .footer {
+            background-color: #70452b;
+            color: white;
+            padding: 35px 5% 15px;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 130px;
+        }
+
+        .footer-section h2 {
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .footer-section h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            max-width: 220px;
+        }
+
+        .footer-section a {
+            color: #f5efec;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffdda0;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons i {
+            font-size: 23px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin-top: 25px;
+            padding-top: 15px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0;
+            font-size: 13px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+    <div class="header">
+        Welcome to shoPIN
+    </div>
+
+    <nav class="nav">
+        <h1>shoPIN</h1>
+        <ul>
+            <li><a href="./HomePage(Shopping).html">Home</a></li>
+            <li><a href="./SignUp(Shopping).html">Sign up</a></li>
+            <li><a href="./ShopPage(Shopping).html">Shop</a></li>
+            <li><a href="./Contact(Shopping).html">Contact Us</a></li>
+            <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
+            <li id="addProductLi"><a href="./AddProduct(Shopping).html">+Add product</a></li>
+            <li><a href="./MyProducts(Shopping).html">My products</a></li>
+            <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
+            <li><input type="text" placeholder="Search"></li>
+            <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+        </ul>
+    </nav>
+
+    <div class="form-container">
+        <h2>Add New Product</h2>
+
+        <form id="productForm">
+
+            <label for="productTitle">Product Name</label>
+            <input type="text" id="productTitle" required>
+
+            <label for="productImg">Image URL</label>
+            <input type="url" id="productImg" required>
+
+            <label for="productPrice">Price ($)</label>
+            <input type="number" id="productPrice" min="0.01" step="0.01" required>
+
+            <label for="productDescription">Description</label>
+            <textarea id="productDescription" required></textarea>
+
+            <label for="productCategory">Category</label>
+            <select id="productCategory" required>
+                <option value="">Choose category</option>
+                <option value="electronics">Electronics</option>
+                <option value="wear">Wear</option>
+                <option value="home-essentials">Home Essentials</option>
+                <option value="beauty">Beauty</option>
+                <option value="accessories">Accessories</option>
+                <option value="sports">Sports</option>
+                <option value="books">Books</option>
+                <option value="toys">Toys</option>
+            </select>
+
+            <button type="submit">Add Product</button>
+
+        </form>
+    </div>
+
+       <footer class="footer">
+
+            <div class="footer-container">
+
+                <div class="footer-section">
+                    <h2>shoPIN</h2>
+                    <p>Your favorite online shopping destination.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <a href="./About(Shopping).html">About Us</a>
+                    <a href="./Contact(Shopping).html">Contact Us</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">FAQ</a>
+                    <a href="#">Shipping Information</a>
+                    <a href="#">Return Policy</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="./HomePage(Shopping).html">Home</a>
+                    <a href="./ShopPage(Shopping).html">Shop</a>
+                    <a href="./SignUp(Shopping).html">Sign Up</a>
+                    <a href="./Basket(Shopping).html">My Basket</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <a href="#" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 shoPIN. All rights reserved.</p>
+            </div>
+
+        </footer>
+
+        </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let productForm = document.getElementById("productForm");
+
+        productForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            let currentUserEmail =
+                localStorage.getItem("currentUserEmail");
+
+            if (!currentUserEmail) {
+                alert("Please log in first!");
+                return;
+            }
+
+            let newProduct = {
+                id: Date.now(),
+                img: document.getElementById("productImg").value.trim(),
+                title: document.getElementById("productTitle").value.trim(),
+                price: Number(document.getElementById("productPrice").value),
+                description: document.getElementById("productDescription").value.trim(),
+                category: document.getElementById("productCategory").value,
+                sellerEmail: currentUserEmail
+            };
+
+            let allProducts =
+                JSON.parse(localStorage.getItem("allProducts")) || [];
+
+            allProducts.push(newProduct);
+
+            localStorage.setItem(
+                "allProducts",
+                JSON.stringify(allProducts)
+            );
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Product added successfully!',
+                showConfirmButton: false,
+                timer: 1500,
+            });
+
+            productForm.reset();
+
+            window.location.href = "./MyProducts(Shopping).html";
+        });
+    </script>
+
+</body>
+
+</html>

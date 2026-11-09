@@ -57,7 +57,7 @@
             list-style: none;
             display: flex;
             justify-content: space-between;
-            gap: 60px;
+            gap: 30px;
         }
 
         a {
@@ -157,8 +157,11 @@
                     <li id="home"><a href="./HomePage(Shopping).html">Home</a></li>
                     <li id="signUp"><a href="./SignUp(Shopping).html">Sign up</a></li>
                     <li id="shop"><a href="./ShopPage(Shopping).html">Shop</a></li>
-                    <li id="about"><a href="./About(Shopping).html">About Us</a></li>
                     <li id="contact"><a href="./Contact(Shopping).html">Contact Us</a></li>
+                    <li id="about"><a href="./About(Shopping).html">About Us</a></li>
+                    <li><a href="./AddProduct(Shopping).html">+Add product</a></li>
+                    <li><a href="./MyProducts(Shopping).html">My products</a></li>
+                    <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
                     <li id="search"><input type="text" placeholder="Search"></li>
                     <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
 
@@ -195,6 +198,7 @@
                     icon: "error",
                     draggable: true
                 });
+                return;
             }
 
 
@@ -207,6 +211,8 @@
                         icon: "success",
                         draggable: true
                     });
+
+                    localStorage.setItem("currentUserEmail", userData.email);
                 } else {
                     Swal.fire({
                         title: "Invalid username or password",
@@ -223,7 +229,7 @@
             }
 
         })
-     
+
 
     </script>
 </body>

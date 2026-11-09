@@ -1,10 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shoPIN - Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
         * {
@@ -32,17 +33,54 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
-            flex-wrap: wrap;
-            gap: 15px;
+
         }
 
         .nav ul {
             list-style: none;
             display: flex;
             align-items: center;
-            gap: 25px;
-            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+
         }
+
+        li {
+            color: grey;
+            border-radius: 20px;
+            transition: background-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        li:hover {
+            text-decoration: underline;
+            transform: translateY(-2px);
+
+        }
+
+
+        #LogInA {
+            background-color: #70452b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        #LogInA:hover {
+            background-color: #9a6743;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
+        }
+
+        .nav i {
+            color: grey;
+            font-size: 25px;
+
+        }
+
 
         a {
             text-decoration: none;
@@ -205,9 +243,13 @@
             <li><a href="./HomePage(Shopping).html">Home</a></li>
             <li><a href="./SignUp(Shopping).html">Sign up</a></li>
             <li><a href="./ShopPage(Shopping).html">Shop</a></li>
-            <li><a href="./AboutUs(Shopping).html">About Us</a></li>
+            <li><a href="./About(Shopping).html">About Us</a></li>
             <li><a href="./ContactUs(Shopping).html" id="contactLink">Contact Us</a></li>
-            <li><a href="./LoginPage(Shopping).html">Log In</a></li>
+            <li><a href="./AddProduct(Shopping).html">+Add product</a></li>
+            <li><a href="./MyProducts(Shopping).html">My products</a></li>
+            <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
+            <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li><a id="LogInA" href="./LoginPage(Shopping).html">Log In</a></li>
         </ul>
     </nav>
 
@@ -234,63 +276,63 @@
         </form>
     </main>
 
-     <footer class="footer">
+    <footer class="footer">
 
-            <div class="footer-container">
+        <div class="footer-container">
 
-                <div class="footer-section">
-                    <h2>shoPIN</h2>
-                    <p>Your favorite online shopping destination.</p>
-                </div>
-
-                <div class="footer-section">
-                    <h3>About Us</h3>
-                    <a href="./About(Shopping).html">About Us</a>
-                    <a href="./Contact(Shopping).html">Contact Us</a>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Customer Service</h3>
-                    <a href="#">FAQ</a>
-                    <a href="#">Shipping Information</a>
-                    <a href="#">Return Policy</a>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <a href="./HomePage(Shopping).html">Home</a>
-                    <a href="./ShopPage(Shopping).html">Shop</a>
-                    <a href="./SignUp(Shopping).html">Sign Up</a>
-                    <a href="./Basket(Shopping).html">My Basket</a>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <div class="social-icons">
-                        <a href="#" aria-label="Instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-
-                        <a href="#" aria-label="Facebook">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-
-                        <a href="#" aria-label="TikTok">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </a>
-                    </div>
-                </div>
-
+            <div class="footer-section">
+                <h2>shoPIN</h2>
+                <p>Your favorite online shopping destination.</p>
             </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2026 shoPIN. All rights reserved.</p>
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <a href="./About(Shopping).html">About Us</a>
+                <a href="./Contact(Shopping).html">Contact Us</a>
             </div>
 
-        </footer>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <a href="#">FAQ</a>
+                <a href="#">Shipping Information</a>
+                <a href="#">Return Policy</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="./HomePage(Shopping).html">Home</a>
+                <a href="./ShopPage(Shopping).html">Shop</a>
+                <a href="./SignUp(Shopping).html">Sign Up</a>
+                <a href="./Basket(Shopping).html">My Basket</a>
+            </div>
+
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+
+                    <a href="#" aria-label="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 shoPIN. All rights reserved.</p>
+        </div>
+
+    </footer>
 
     <script>
-        document.getElementById("contactForm").addEventListener("submit", function(event) {
+        document.getElementById("contactForm").addEventListener("submit", function (event) {
             event.preventDefault();
 
             alert("Thank you for contacting shoPIN!");
@@ -299,4 +341,5 @@
         });
     </script>
 </body>
+
 </html>

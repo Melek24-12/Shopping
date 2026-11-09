@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shoPIN Sign Up</title>
-    
+
     <style>
         * {
             padding: 0;
@@ -57,7 +57,7 @@
             list-style: none;
             display: flex;
             justify-content: space-between;
-            gap: 60px;
+            gap: 30px;
         }
 
         .basliq a {
@@ -204,8 +204,8 @@
 
 
         li {
-
             border-radius: 20px;
+            color: grey;
             transition: background-color 0.3s ease,
                 transform 0.3s ease;
         }
@@ -216,7 +216,11 @@
 
         }
 
-         .footer {
+        .nav i {
+            font-size: 25px;
+        }
+
+        .footer {
             background-color: #70452b;
             color: white;
             padding: 35px 5% 15px;
@@ -290,7 +294,6 @@
                 gap: 25px;
             }
         }
-
     </style>
 </head>
 
@@ -315,9 +318,13 @@
                         <li><a href="./HomePage(Shopping).html">Home</a></li>
                         <li id="signUp"><a href="./SignUpPage(Shopping).html">Sign up</a></li>
                         <li><a href="./ShopPage(Shopping).html">Shop</a></li>
-                        <li><a href="./About(Shopping).html">About Us</a></li>
                         <li><a href="./Contact(Shopping).html">Contact Us</a></li>
+                        <li><a href="./About(Shopping).html">About Us</a></li>
+                        <li><a href="./AddProduct(Shopping).html">+Add product</a></li>
+                        <li><a href="./MyProducts(Shopping).html">My products</a></li>
+                        <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
                         <li><input type="text" placeholder="Search"></li>
+                        <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                         <li><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
 
                     </ul>
@@ -341,7 +348,7 @@
             </div>
         </div>
 
-         <footer class="footer">
+        <footer class="footer">
 
             <div class="footer-container">
 
@@ -456,7 +463,7 @@
                     draggable: true
                 });
             } else {
-               
+
                 localStorage.setItem("userData", JSON.stringify({
                     name: inpName.value,
                     email: inpEmail.value,
@@ -464,7 +471,7 @@
                 }));
                 document.querySelector('.content form').reset();
 
-                 Swal.fire({
+                Swal.fire({
                     title: "Sign Up Successful!",
                     icon: "success",
                     draggable: true

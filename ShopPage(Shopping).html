@@ -57,7 +57,7 @@
             list-style: none;
             display: flex;
             justify-content: space-between;
-            gap: 60px;
+            gap: 30px;
         }
 
         .basliq a {
@@ -66,12 +66,20 @@
             color: inherit;
         }
 
-        #LogInA {
-            background-color: rgb(177, 104, 45);
+         #LogInA {
+            background-color: #70452b;
             color: white;
             padding: 10px 20px;
-            border-radius: 5px;
-            text-decoration: underline;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        #LogInA:hover {
+            background-color: #9a6743;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
         }
 
 
@@ -131,23 +139,6 @@
             padding: 30px;
         }
 
-        .category {
-            width: 220px;
-            flex-shrink: 0;
-        }
-
-        .categoryUl {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            background-color: #fff;
-            padding: 10px;
-            width: 100%;
-            min-height: auto;
-            gap: 10px;
-            margin-top: 28px;
-        }
-
         ul {
             list-style: none;
         }
@@ -159,59 +150,32 @@
 
         .cards {
             flex: 1;
+            min-width: 0;
             display: grid;
-            grid-template-columns: repeat(5, minmax(220px, 1fr));
-            justify-content: center;
-            gap: 5px;
-            margin-top: 30px;
-            overflow-x: auto;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 15px;
+            padding: 10px;
+            margin-top: 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            align-content: start;
         }
 
-        @media (max-width: 900px) {
-            .cards {
-                grid-template-columns: repeat(2, minmax(220px, 1fr));
-            }
-        }
-
-        @media (max-width: 500px) {
-            .products {
-                flex-direction: column;
-            }
-
-            .category {
-                width: 100%;
-            }
-
-            .categoryUl {
-                flex-direction: row;
-                flex-wrap: wrap;
-                min-height: auto;
-            }
-
-            .cards {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                width: 100%;
-            }
-
-            .card {
-                width: 100%;
-            }
-        }
 
         .card {
-            width: 200px;
+            width: 100%;
+            min-width: 0;
             background-color: white;
             border-radius: 10px;
-            padding: 12px;
+            padding: 10px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
         }
 
         .card img {
             width: 100%;
             height: 150px;
             object-fit: cover;
-            margin: 0;
             padding: 0;
             border-radius: 8px;
         }
@@ -321,40 +285,52 @@
 
         }
 
+
         .products {
             display: flex;
-            align-items: flex-start;
-            gap: 30px;
-            padding: 30px;
+            align-items: stretch;
+            gap: 20px;
+            padding: 25px;
+            height: 700px;
+            overflow: hidden;
         }
 
         .category {
-            width: 220px;
-            flex-shrink: 0;
+            width: 200px;
+            min-width: 200px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 15px;
+            overflow-y: auto;
         }
 
         .categoryUl {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            background-color: white;
-            padding: 15px;
-            width: 100%;
-            border-radius: 10px;
+            gap: 12px;
         }
 
         .categoryUl li {
             width: 100%;
+            padding: 12px;
             border: 1px solid rgb(177, 104, 45);
             border-radius: 8px;
-            padding: 10px;
             color: rgb(177, 104, 45);
-            transition: background-color 0.3s ease;
+            transition: 0.3s;
         }
 
         .categoryUl li:hover {
             background-color: rgb(245, 239, 236);
             transform: none;
+        }
+
+        .categoryUl li.active {
+            background-color: rgb(177, 104, 45);
+            border-radius: 8px;
+        }
+
+        .categoryUl li.active a {
+            color: white;
         }
 
         .categoryUl a {
@@ -363,13 +339,7 @@
             color: inherit;
         }
 
-        .categoryUl li {
 
-            border: 1px solid rgb(177, 104, 45);
-            border-radius: 10px;
-            padding: 5px 10px;
-
-        }
 
         .footer {
             background-color: #70452b;
@@ -438,21 +408,6 @@
             margin-bottom: 0;
             font-size: 13px;
         }
-
-        @media (max-width: 600px) {
-            .footer-container {
-                flex-direction: column;
-                gap: 25px;
-            }
-        }
-
-        .products {
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
-            gap: 30px;
-            padding: 20px;
-        }
     </style>
 </head>
 
@@ -478,8 +433,11 @@
                         <li id="home"><a href="./HomePage(Shopping).html">Home</a></li>
                         <li id="signUp"><a href="./SignUp(Shopping).html">Sign up</a></li>
                         <li id="shop"><a href="./ShopPage(Shopping).html">Shop</a></li>
-                        <li id="about"><a href="./About(Shopping).html">About Us</a></li>
                         <li id="contact"><a href="./Contact(Shopping).html">Contact Us</a></li>
+                        <li id="about"><a href="./About(Shopping).html">About Us</a></li>
+                        <li><a href="./AddProduct(Shopping).html">+Add product</a></li>
+                        <li><a href="./MyProducts(Shopping).html">My products</a></li>
+                        <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
                         <li id="search"><input type="text" placeholder="Search"></li>
                         <li id="basket"><a href="./Basket(Shopping).html"><i
                                     class="fa-solid fa-cart-shopping icon"></i></a></li>
@@ -508,10 +466,15 @@
         <div class="products">
             <div class="category">
                 <ul class="categoryUl">
-                    <li id="all"><a href="">All</a></li>
+                    <li id="all" class="active"><a href="">All</a></li>
                     <li id="electronics"><a href="">Electronics</a></li>
                     <li id="wear"><a href="">Wear</a></li>
                     <li id="home-essentials"><a href="">Home Essentials</a></li>
+                    <li id="beauty"><a href="">Beauty</a></li>
+                    <li id="accessories"><a href="">Accessories</a></li>
+                    <li id="sports"><a href="">Sports</a></li>
+                    <li id="books"><a href="">Books</a></li>
+                    <li id="toys"><a href="">Toys</a></li>
                 </ul>
             </div>
 
@@ -626,7 +589,7 @@
                 title: "Perfume",
                 price: 150,
                 description: "A fresh and elegant perfume with a pleasant long-lasting scent.",
-                category: "home-essentials"
+                category: "beauty"
             },
 
             card7: {
@@ -650,7 +613,7 @@
                 title: "Sunglasses",
                 price: 130,
                 description: "Classic sunglasses with a stylish frame for sunny days.",
-                category: "home-essentials"
+                category: "wear"
             },
 
             card10: {
@@ -739,10 +702,167 @@
                 price: 1500,
                 description: "Portable laptop for studying, working, and everyday tasks.",
                 category: "electronics"
+            },
+
+            card21: {
+                img: "https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b",
+                title: "Face Cream",
+                price: 25,
+                description: "Moisturizing face cream for soft and healthy-looking skin.",
+                category: "beauty"
+            },
+
+            card22: {
+                img: "https://images.unsplash.com/photo-1586495777744-4413f21062fa",
+                title: "Lipstick",
+                price: 15,
+                description: "Beautiful lipstick with a smooth and long-lasting finish.",
+                category: "beauty"
+            },
+
+            card23: {
+                img: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108",
+                title: "Skincare Set",
+                price: 35,
+                description: "Complete skincare set for your daily beauty routine.",
+                category: "beauty"
+            },
+
+            card24: {
+                img: "https://images.unsplash.com/photo-1594035910387-fea47794261f",
+                title: "Perfume Set",
+                price: 65,
+                description: "Elegant perfume with a fresh and pleasant fragrance.",
+                category: "beauty"
+            },
+
+            card25: {
+                img: "https://images.unsplash.com/photo-1611652022419-a9419f74343d",
+                title: "Necklace",
+                price: 30,
+                description: "Elegant necklace suitable for everyday outfits.",
+                category: "accessories"
+            },
+
+            card26: {
+                img: "https://images.unsplash.com/photo-1508296695146-257a814070b4",
+                title: "Sunglasses",
+                price: 40,
+                description: "Modern sunglasses with a stylish frame.",
+                category: "accessories"
+            },
+
+            card27: {
+                img: "https://images.unsplash.com/photo-1584917865442-de89df76afd3",
+                title: "Leather Bag",
+                price: 85,
+                description: "Stylish leather bag for everyday use.",
+                category: "accessories"
+            },
+
+            card28: {
+                img: "https://images.unsplash.com/photo-1611591437281-460bfbe1220a",
+                title: "Bracelet",
+                price: 22,
+                description: "Simple and beautiful bracelet for any occasion.",
+                category: "accessories"
+            },
+
+            card29: {
+                img: "https://images.unsplash.com/photo-1517466787929-bc90951d0974",
+                title: "Football",
+                price: 30,
+                description: "Durable football suitable for outdoor games.",
+                category: "sports"
+            },
+
+            card30: {
+                img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b",
+                title: "Yoga Mat",
+                price: 25,
+                description: "Comfortable yoga mat for exercise and stretching.",
+                category: "sports"
+            },
+
+            card31: {
+                img: "https://images.unsplash.com/photo-1583454110551-21f2fa2afe61",
+                title: "Dumbbells",
+                price: 45,
+                description: "Fitness dumbbells for strength training.",
+                category: "sports"
+            },
+
+            card32: {
+                img: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211",
+                title: "Running Shoes",
+                price: 90,
+                description: "Lightweight running shoes for comfortable workouts.",
+                category: "sports"
+            },
+
+            card33: {
+                img: "https://images.unsplash.com/photo-1544947950-fa07a98d237f",
+                title: "Novel",
+                price: 18,
+                description: "An interesting novel for your reading collection.",
+                category: "books"
+            },
+
+            card34: {
+                img: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+                title: "Science Book",
+                price: 24,
+                description: "Discover interesting facts about science and nature.",
+                category: "books"
+            },
+
+            card35: {
+                img: "https://images.unsplash.com/photo-1532012197267-da84d127e765",
+                title: "Programming Book",
+                price: 32,
+                description: "A useful book for learning programming concepts.",
+                category: "books"
+            },
+
+            card36: {
+                img: "https://images.unsplash.com/photo-1519682337058-a94d519337bc",
+                title: "English Grammar Book",
+                price: 16,
+                description: "Improve your English grammar with practical lessons.",
+                category: "books"
+            },
+
+            card37: {
+                img: "https://images.unsplash.com/photo-1559454403-b8fb88521f11",
+                title: "Teddy Bear",
+                price: 20,
+                description: "Soft and adorable teddy bear.",
+                category: "toys"
+            },
+
+            card38: {
+                img: "https://images.unsplash.com/photo-1587654780291-39c9404d746b",
+                title: "Building Blocks",
+                price: 45,
+                description: "Creative building blocks for fun activities.",
+                category: "toys"
+            },
+
+            card39: {
+                img: "https://images.unsplash.com/photo-1594787318286-3d835c1d207f",
+                title: "Toy Car",
+                price: 15,
+                description: "Colorful toy car for imaginative play.",
+                category: "toys"
+            },
+
+            card40: {
+                img: "https://avatars.mds.yandex.net/i?id=86dbf1b1c89de3f170a7705f173d0beb10b4f13c-11953023-images-thumbs&n=13",
+                title: "Puzzle",
+                price: 18,
+                description: "Fun puzzle game for developing problem-solving skills.",
+                category: "toys"
             }
-
-
-
         }
 
         let cardsDiv = document.querySelector('.cards');
@@ -750,29 +870,51 @@
         function showCards(category) {
             cardsDiv.innerHTML = "";
 
-            for (let card in cards) {
-                let cardData = cards[card];
+            // Əvvəlki məhsullar
+            let defaultProducts = Object.entries(cards).map(([id, product]) => ({
+                ...product,
+                id: id
+            }));
 
-                if (category === "all" || cardData.category === category) {
+            // İstifadəçilərin əlavə etdiyi məhsullar
+            let newProducts =
+                JSON.parse(localStorage.getItem("allProducts")) || [];
+
+            // Bütün məhsulları birləşdiririk
+            let allProducts = [...defaultProducts, ...newProducts];
+
+            allProducts.forEach(product => {
+
+                if (category === "all" || product.category === category) {
+
                     cardsDiv.innerHTML += `
                 <div class="card">
-                    <img src="${cardData.img}" alt="${cardData.title}">
-                    <h3>${cardData.title}</h3>
-                    <span>${cardData.description}</span>
-                    <p>$${cardData.price}</p>
-                    <button data-id="${card}">Add to Cart</button>
+                    <img src="${product.img}" alt="${product.title}">
+                    <h3>${product.title}</h3>
+                    <span>${product.description}</span>
+                    <p>$${product.price}</p>
+                    <button data-id="${product.id}">Add to Cart</button>
                 </div>
             `;
                 }
-            }
+            });
         }
+
 
         showCards("all");
 
-        document.querySelector("#all").onclick = () => showCards("all");
-        document.querySelector("#electronics").onclick = () => showCards("electronics");
-        document.querySelector("#wear").onclick = () => showCards("wear");
-        document.querySelector("#home-essentials").onclick = () => showCards("home-essentials");
+
+        let categories = document.querySelectorAll(".categoryUl li");
+
+        categories.forEach(category => {
+            category.addEventListener("click", function () {
+                categories.forEach(item => item.classList.remove("active"));
+
+                this.classList.add("active");
+
+                showCards(this.id);
+            });
+        });
 
         let all = document.getElementById('all');
         let electronics = document.getElementById('electronics');
@@ -812,7 +954,18 @@
                 let cartItems =
                     JSON.parse(localStorage.getItem("cartItems")) || [];
 
-                cartItems.push(cardData);
+                let existingItem = cartItems.find(item => item.title === cardData.title);
+
+                if (existingItem) {
+                    existingItem.quantity++;
+                } else {
+                    cartItems.push({
+                        ...cardData,
+                        quantity: 1
+                    });
+                }
+
+                localStorage.setItem("cartItems", JSON.stringify(cartItems));
                 localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
                 Swal.fire({

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Products - shoPIN</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container{
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            
+        }
+
+        body {
+            font-family: sans-serif;
+            background-color: rgb(245, 239, 236);
+        }
+
+        .header {
+            background-color: rgb(177, 104, 45);
+            padding: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        .nav {
+            background-color: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav a {
+            color: inherit;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: rgb(177, 104, 45);
+            margin: 30px 0;
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 25px;
+        }
+
+        .card {
+            width: 220px;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .card h3 {
+            margin: 12px 0;
+        }
+
+        .card p {
+            color: rgb(177, 104, 45);
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .card span {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .empty {
+            text-align: center;
+            margin: 50px;
+            color: #777;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 30px;
+        }
+
+
+        li {
+            color: grey;
+            border-radius: 20px;
+            transition: background-color 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        li:hover {
+            text-decoration: underline;
+            transform: translateY(-2px);
+
+        }
+
+        #LogInA {
+            background-color: #70452b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+
+        #LogInA:hover {
+            background-color: #9a6743;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
+        }
+
+        .nav i {
+            font-size: 25px;
+        }
+
+        #myProductsLi {
+            background-color: #b9733a;
+            padding: 8px 10px;
+            border-radius: 20px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #myProductsLi a {
+            color: white;
+            padding: 0px;
+            margin: 0;
+        }
+
+        .navList input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid grey;
+        }
+
+        .delete-btn {
+            background-color: #b93a3a;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+         .footer {
+            background-color: #70452b;
+            color: white;
+            padding: 35px 5% 15px;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 130px;
+        }
+
+        .footer-section h2 {
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .footer-section h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            max-width: 220px;
+        }
+
+        .footer-section a {
+            color: #f5efec;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffdda0;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons i {
+            font-size: 23px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin-top: 25px;
+            padding-top: 15px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0;
+            font-size: 13px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+   <div class="container">
+     <div class="header">
+        Welcome to shoPIN
+    </div>
+
+    <nav class="nav">
+        <h1>shoPIN</h1>
+        <ul>
+            <li><a href="./HomePage(Shopping).html">Home</a></li>
+            <li><a href="./SignUp(Shopping).html">Sign up</a></li>
+            <li><a href="./ShopPage(Shopping).html">Shop</a></li>
+            <li><a href="./Contact(Shopping).html">Contact Us</a></li>
+            <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
+            <li><a href="./AddProduct(Shopping).html">+Add product</a></li>
+            <li id="myProductsLi"><a href="./MyProducts(Shopping).html">My products</a></li>
+            <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
+            <li><input type="text" placeholder="Search"></li>
+            <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+            <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+        </ul>
+    </nav>
+
+    <h2>My Products</h2>
+
+    <div class="cards"></div>
+
+      <footer class="footer">
+
+            <div class="footer-container">
+
+                <div class="footer-section">
+                    <h2>shoPIN</h2>
+                    <p>Your favorite online shopping destination.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <a href="./About(Shopping).html">About Us</a>
+                    <a href="./Contact(Shopping).html">Contact Us</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">FAQ</a>
+                    <a href="#">Shipping Information</a>
+                    <a href="#">Return Policy</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="./HomePage(Shopping).html">Home</a>
+                    <a href="./ShopPage(Shopping).html">Shop</a>
+                    <a href="./SignUp(Shopping).html">Sign Up</a>
+                    <a href="./Basket(Shopping).html">My Basket</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <a href="#" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 shoPIN. All rights reserved.</p>
+            </div>
+
+        </footer>
+   </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        let cardsContainer = document.querySelector(".cards");
+
+        let currentUserEmail =
+            localStorage.getItem("currentUserEmail");
+
+        let allProducts =
+            JSON.parse(localStorage.getItem("allProducts")) || [];
+
+        if (!currentUserEmail) {
+            cardsContainer.innerHTML =
+                '<p class="empty">Please log in to see your products.</p>';
+        } else {
+            let myProducts = allProducts.filter(
+                product => product.sellerEmail === currentUserEmail
+            );
+
+            if (myProducts.length === 0) {
+                cardsContainer.innerHTML =
+                    '<p class="empty">You have not added any products yet.</p>';
+            } else {
+                myProducts.forEach(product => {
+                    let card = document.createElement("div");
+                    card.classList.add("card");
+
+                    card.innerHTML = `
+                        <img src="${product.img}" alt="${product.title}">
+                        <h3>${product.title}</h3>
+                        <span>${product.description}</span>
+                        <p>$${product.price.toFixed(2)}</p>
+                        <button class="delete-btn" onclick="deleteProduct('${product.id}')">Delete</button>
+                    `;
+
+                    cardsContainer.appendChild(card);
+                });
+            }
+        }
+
+      function deleteProduct(productId) {
+    Swal.fire({
+        title: "Are you sure?",
+        text: "This product will be deleted permanently!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#b93a3a",
+        cancelButtonColor: "#70452b",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "Cancel",
+        background: "#f5efec",
+        color: "#70452b"
+    }).then((result) => {
+
+        if (result.isConfirmed) {
+            let allProducts = JSON.parse(localStorage.getItem("allProducts")) || [];
+
+            let updatedProducts = allProducts.filter(
+                product => String(product.id) !== String(productId)
+            );
+
+            localStorage.setItem("allProducts", JSON.stringify(updatedProducts));
+
+            Swal.fire({
+                title: "Deleted!",
+                text: "Your product has been deleted.",
+                icon: "success",
+                confirmButtonColor: "#b1682d",
+                background: "#f5efec",
+                color: "#70452b"
+            }).then(() => {
+                window.location.reload();
+            });
+        }
+    });
+}
+    </script>
+
+</body>
+
+</html>

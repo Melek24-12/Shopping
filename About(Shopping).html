@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -31,15 +32,14 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
-            flex-wrap: wrap;
-            gap: 15px;
+           
         }
 
         .nav ul {
             list-style: none;
             display: flex;
             align-items: center;
-            gap: 25px;
+            gap: 30px;
             flex-wrap: wrap;
         }
 
@@ -119,27 +119,76 @@
             border-radius: 5px;
         }
 
-        .footer {
-            background-color: rgb(156, 111, 75);
-            padding: 20px;
-            text-align: center;
+         .footer {
+            background-color: #70452b;
             color: white;
-            margin-top: 40px;
+            padding: 35px 5% 15px;
+            margin-top: auto;
         }
 
-        @media (max-width: 600px) {
-            .nav {
-                justify-content: center;
-            }
-
-            .main {
-                width: 92%;
-            }
-
-            .intro {
-                padding: 25px;
-            }
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 25px;
+            flex-wrap: wrap;
         }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            min-width: 130px;
+        }
+
+        .footer-section h2 {
+            font-size: 28px;
+            color: #fff;
+        }
+
+        .footer-section h3 {
+            font-size: 17px;
+            margin-bottom: 5px;
+        }
+
+        .footer-section p {
+            font-size: 14px;
+            max-width: 220px;
+        }
+
+        .footer-section a {
+            color: #f5efec;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #ffdda0;
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icons i {
+            font-size: 23px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+            margin-top: 25px;
+            padding-top: 15px;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0;
+            font-size: 13px;
+        }
+
+       
     </style>
 </head>
 
@@ -153,8 +202,11 @@
             <li><a href="./HomePage(Shopping).html">Home</a></li>
             <li><a href="./SignUp(Shopping).html">Sign up</a></li>
             <li><a href="./ShopPage(Shopping).html">Shop</a></li>
-            <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
             <li><a href="./Contact(Shopping).html">Contact Us</a></li>
+            <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
+            <li><a href="./AddProduct(Shopping).html">+Add product</a></li>
+            <li><a href="./MyProducts(Shopping).html">My products</a></li>
+            <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
             <li><a href="./LoginPage(Shopping).html">Log In</a></li>
         </ul>
     </nav>
@@ -176,24 +228,76 @@
 
         <section class="features">
             <div class="feature">
-                <h3>🛍️ Our Products</h3>
+                <h3> Our Products</h3>
                 <p>Explore fashion, electronics and useful products for your home.</p>
             </div>
 
             <div class="feature">
-                <h3>✨ Our Goal</h3>
+                <h3> Our Goal</h3>
                 <p>To make your online shopping experience easy and enjoyable.</p>
             </div>
 
             <div class="feature">
-                <h3>🤎 Why shoPIN?</h3>
+                <h3> Why shoPIN?</h3>
                 <p>A simple website where you can discover different products in one place.</p>
             </div>
         </section>
     </main>
 
-    <footer class="footer">
-        <p>&copy; 2026 shoPIN. All rights reserved.</p>
-    </footer>
+      <footer class="footer">
+
+            <div class="footer-container">
+
+                <div class="footer-section">
+                    <h2>shoPIN</h2>
+                    <p>Your favorite online shopping destination.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <a href="./About(Shopping).html">About Us</a>
+                    <a href="./Contact(Shopping).html">Contact Us</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">FAQ</a>
+                    <a href="#">Shipping Information</a>
+                    <a href="#">Return Policy</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="./HomePage(Shopping).html">Home</a>
+                    <a href="./ShopPage(Shopping).html">Shop</a>
+                    <a href="./SignUp(Shopping).html">Sign Up</a>
+                    <a href="./Basket(Shopping).html">My Basket</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <a href="#" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 shoPIN. All rights reserved.</p>
+            </div>
+
+        </footer>
 </body>
+
 </html>
