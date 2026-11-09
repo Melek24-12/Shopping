@@ -65,7 +65,7 @@
             color: grey;
         }
 
-        #LogInA {
+        #LogInA , .logout a {
             background-color: #70452b;
             color: white;
             padding: 10px 20px;
@@ -75,7 +75,7 @@
             transition: all 0.3s ease;
         }
 
-        #LogInA:hover {
+        #LogInA:hover , .logout a:hover {
             background-color: #9a6743;
             transform: translateY(-3px);
             box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
@@ -140,6 +140,16 @@
             transform: translateY(-2px);
 
         }
+
+        .log-in p {
+            font-size: 14px;
+            color: grey;
+        }
+
+        .log-in a {
+            color: rgb(177, 104, 45);
+            text-decoration: none;
+        }
     </style>
 </head>
 
@@ -164,6 +174,7 @@
                     <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
                     <li id="search"><input type="text" placeholder="Search"></li>
                     <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+                    <li id="logout" hidden><a href="#" id="LogOutA">Log Out</a></li>
 
                 </ul>
             </div>
@@ -172,6 +183,7 @@
             <form action="">
                 <div class="log-in">
                     <h2 class="logIn">Log In</h2>
+                    <p>If you don't have an account, <a href="./SignUp(Shopping).html">sign up here</a>.</p>
                     <input type="text" id="username" placeholder="Username">
                     <input type="password" id="pin" placeholder="Password">
                     <button type="submit">Log In</button>
@@ -203,7 +215,7 @@
 
 
 
-            if (localStorage.getItem("userData")) {
+            if (localStorage.getItem("userData") ) {
                 let userData = JSON.parse(localStorage.getItem("userData"));
                 if (inpName.value.trim() === userData.name.trim() && inpPass.value === userData.password) {
                     Swal.fire({
@@ -213,23 +225,53 @@
                     });
 
                     localStorage.setItem("currentUserEmail", userData.email);
-                } else {
+                } else if( inpName.value.trim() !== userData.name.trim() || inpPass.value !== userData.password) {
                     Swal.fire({
-                        title: "Invalid username or password",
+                        title: "Invalid username or password.(or just try to sign up first)",
                         icon: "error",
                         draggable: true
                     });
+                    passwordInput.value = "";   
+                    usernameInput.value = "";
                 }
-            } else {
+            } else if (localStorage.getItem("userData") == null) {
                 Swal.fire({
                     title: "No user data found. Please sign up first.",
                     icon: "error",
                     draggable: true
+                    
                 });
             }
 
         })
 
+         let login = document.getElementById("login");
+        let logout = document.getElementById("logout");
+
+        let userData = localStorage.getItem("userData");
+
+        if (userData) {
+            login.hidden = true;
+            logout.hidden = false;
+        } else {
+            login.hidden = false;
+            logout.hidden = true;
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+
+        logout.addEventListener("click", function () {
+            localStorage.removeItem("currentUserEmail");
+            login.hidden = false;
+            logout.hidden = true;
+        });
 
     </script>
 </body>

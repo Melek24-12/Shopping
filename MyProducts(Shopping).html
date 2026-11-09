@@ -14,11 +14,11 @@
             box-sizing: border-box;
         }
 
-        .container{
+        .container {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            
+
         }
 
         body {
@@ -40,6 +40,7 @@
             justify-content: space-between;
             align-items: center;
         }
+
         .nav ul {
             list-style: none;
             display: flex;
@@ -136,7 +137,8 @@
 
         }
 
-        #LogInA {
+        #LogInA,
+        .logout a {
             background-color: #70452b;
             color: white;
             padding: 10px 20px;
@@ -146,7 +148,8 @@
             transition: all 0.3s ease;
         }
 
-        #LogInA:hover {
+        #LogInA:hover,
+        .logout a:hover {
             background-color: #9a6743;
             transform: translateY(-3px);
             box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
@@ -188,7 +191,7 @@
             transition: background-color 0.3s ease;
         }
 
-         .footer {
+        .footer {
             background-color: #70452b;
             color: white;
             padding: 35px 5% 15px;
@@ -256,39 +259,39 @@
             margin-bottom: 0;
             font-size: 13px;
         }
-
     </style>
 </head>
 
 <body>
 
-   <div class="container">
-     <div class="header">
-        Welcome to shoPIN
-    </div>
+    <div class="container">
+        <div class="header">
+            Welcome to shoPIN
+        </div>
 
-    <nav class="nav">
-        <h1>shoPIN</h1>
-        <ul>
-            <li><a href="./HomePage(Shopping).html">Home</a></li>
-            <li><a href="./SignUp(Shopping).html">Sign up</a></li>
-            <li><a href="./ShopPage(Shopping).html">Shop</a></li>
-            <li><a href="./Contact(Shopping).html">Contact Us</a></li>
-            <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
-            <li><a href="./AddProduct(Shopping).html">+Add product</a></li>
-            <li id="myProductsLi"><a href="./MyProducts(Shopping).html">My products</a></li>
-            <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
-            <li><input type="text" placeholder="Search"></li>
-            <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-            <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
-        </ul>
-    </nav>
+        <nav class="nav">
+            <h1>shoPIN</h1>
+            <ul>
+                <li><a href="./HomePage(Shopping).html">Home</a></li>
+                <li><a href="./SignUp(Shopping).html">Sign up</a></li>
+                <li><a href="./ShopPage(Shopping).html">Shop</a></li>
+                <li><a href="./Contact(Shopping).html">Contact Us</a></li>
+                <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
+                <li><a href="./AddProduct(Shopping).html">+Add product</a></li>
+                <li id="myProductsLi"><a href="./MyProducts(Shopping).html">My products</a></li>
+                <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
+                <li><input type="text" placeholder="Search"></li>
+                <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+                <li id="logout" hidden><a href="#" id="LogOutA">Log Out</a></li>
+            </ul>
+        </nav>
 
-    <h2>My Products</h2>
+        <h2>My Products</h2>
 
-    <div class="cards"></div>
+        <div class="cards"></div>
 
-      <footer class="footer">
+        <footer class="footer">
 
             <div class="footer-container">
 
@@ -342,7 +345,7 @@
             </div>
 
         </footer>
-   </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -383,42 +386,71 @@
             }
         }
 
-      function deleteProduct(productId) {
-    Swal.fire({
-        title: "Are you sure?",
-        text: "This product will be deleted permanently!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#b93a3a",
-        cancelButtonColor: "#70452b",
-        confirmButtonText: "Yes, delete it!",
-        cancelButtonText: "Cancel",
-        background: "#f5efec",
-        color: "#70452b"
-    }).then((result) => {
-
-        if (result.isConfirmed) {
-            let allProducts = JSON.parse(localStorage.getItem("allProducts")) || [];
-
-            let updatedProducts = allProducts.filter(
-                product => String(product.id) !== String(productId)
-            );
-
-            localStorage.setItem("allProducts", JSON.stringify(updatedProducts));
-
+        function deleteProduct(productId) {
             Swal.fire({
-                title: "Deleted!",
-                text: "Your product has been deleted.",
-                icon: "success",
-                confirmButtonColor: "#b1682d",
+                title: "Are you sure?",
+                text: "This product will be deleted permanently!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#b93a3a",
+                cancelButtonColor: "#70452b",
+                confirmButtonText: "Yes, delete it!",
+                cancelButtonText: "Cancel",
                 background: "#f5efec",
                 color: "#70452b"
-            }).then(() => {
-                window.location.reload();
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    let allProducts = JSON.parse(localStorage.getItem("allProducts")) || [];
+
+                    let updatedProducts = allProducts.filter(
+                        product => String(product.id) !== String(productId)
+                    );
+
+                    localStorage.setItem("allProducts", JSON.stringify(updatedProducts));
+
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "Your product has been deleted.",
+                        icon: "success",
+                        confirmButtonColor: "#b1682d",
+                        background: "#f5efec",
+                        color: "#70452b"
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                }
             });
         }
-    });
-}
+
+         let login = document.getElementById("login");
+        let logout = document.getElementById("logout");
+
+        let userData = localStorage.getItem("userData");
+
+        if (userData) {
+            login.hidden = true;
+            logout.hidden = false;
+        } else {
+            login.hidden = false;
+            logout.hidden = true;
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+
+        logout.addEventListener("click", function () {
+            localStorage.removeItem("currentUserEmail");
+            login.hidden = false;
+            logout.hidden = true;
+        });
+
     </script>
 
 </body>

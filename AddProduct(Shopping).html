@@ -126,7 +126,7 @@
 
         }
 
-        #LogInA {
+        #LogInA , .logout a {
             background-color: #70452b;
             color: white;
             padding: 10px 20px;
@@ -136,7 +136,7 @@
             transition: all 0.3s ease;
         }
 
-        #LogInA:hover {
+        #LogInA:hover , .logout a:hover {
             background-color: #9a6743;
             transform: translateY(-3px);
             box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
@@ -254,6 +254,7 @@
             <li><input type="text" placeholder="Search"></li>
             <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
             <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+            <li id="logout"><a href="#">Log out</a></li>
         </ul>
     </nav>
 
@@ -395,6 +396,34 @@
             productForm.reset();
 
             window.location.href = "./MyProducts(Shopping).html";
+        });
+
+         let login = document.getElementById("login");
+        let logout = document.getElementById("logout");
+
+        let userData = localStorage.getItem("userData");
+
+        if (userData) {
+            login.hidden = true;
+            logout.hidden = false;
+        } else {
+            login.hidden = false;
+            logout.hidden = true;
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+
+        logout.addEventListener("click", function () {
+            localStorage.removeItem("currentUserEmail");
+            login.hidden = false;
+            logout.hidden = true;
         });
     </script>
 

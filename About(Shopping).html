@@ -209,7 +209,8 @@
             <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
             <li><input type="text" placeholder="Search"></li>
             <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-            <li><a href="./LoginPage(Shopping).html">Log In</a></li>
+            <li id="login"><a href="./LoginPage(Shopping).html">Log In</a></li>
+            <li id="logout"><a href="#">Log out</a></li>
         </ul>
     </nav>
 
@@ -300,6 +301,39 @@
             </div>
 
         </footer>
+
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+
+             let login = document.getElementById("login");
+        let logout = document.getElementById("logout");
+
+        let userData = localStorage.getItem("userData");
+
+        if (userData) {
+            login.hidden = true;
+            logout.hidden = false;
+        } else {
+            login.hidden = false;
+            logout.hidden = true;
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+
+        logout.addEventListener("click", function () {
+            localStorage.removeItem("currentUserEmail");
+            login.hidden = false;
+            logout.hidden = true;
+        });
+
+        </script>
 </body>
 
 </html>

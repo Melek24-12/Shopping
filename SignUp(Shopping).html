@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shoPIN Sign Up</title>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
         * {
@@ -171,7 +172,7 @@
             color: inherit;
         }
 
-        #LogInA {
+        #LogInA , .logout a {
             background-color: #70452b;
             color: white;
             padding: 10px 20px;
@@ -181,7 +182,7 @@
             transition: all 0.3s ease;
         }
 
-        #LogInA:hover {
+        #LogInA:hover , .logout a:hover {
             background-color: #9a6743;
             transform: translateY(-3px);
             box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
@@ -190,8 +191,6 @@
         #signUp {
             background-color: #b9733a;
             padding: 6px 10px;
-            padding-top: 8px;
-            padding-bottom: 0px;
             border-radius: 20px;
             color: white;
         }
@@ -205,6 +204,8 @@
 
         li {
             border-radius: 20px;
+            display: flex;
+            align-items: center;
             color: grey;
             transition: background-color 0.3s ease,
                 transform 0.3s ease;
@@ -325,7 +326,8 @@
                         <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
                         <li><input type="text" placeholder="Search"></li>
                         <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                        <li><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+                        <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+                        <li id="logout" hidden><a href="#" >Log Out</a></li>
 
                     </ul>
                 </div>
@@ -480,6 +482,34 @@
 
         })
 
+
+         let login = document.getElementById("login");
+        let logout = document.getElementById("logout");
+
+        let userData = localStorage.getItem("userData");
+
+        if (userData) {
+            login.hidden = true;
+            logout.hidden = false;
+        } else {
+            login.hidden = false;
+            logout.hidden = true;
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+
+        logout.addEventListener("click", function () {
+            localStorage.removeItem("currentUserEmail");
+            login.hidden = false;
+            logout.hidden = true;
+        });
 
 
 

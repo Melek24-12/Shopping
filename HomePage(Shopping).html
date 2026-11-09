@@ -60,7 +60,7 @@
             border: 1px solid grey;
         }
 
-       .nav ul {
+        .nav ul {
             list-style: none;
             display: flex;
             justify-content: space-between;
@@ -73,7 +73,8 @@
             color: inherit;
         }
 
-        #LogInA {
+        #LogInA,
+        #logout {
             background-color: #70452b;
             color: white;
             padding: 10px 20px;
@@ -83,7 +84,8 @@
             transition: all 0.3s ease;
         }
 
-        #LogInA:hover {
+        #LogInA:hover,
+        #logout:hover {
             background-color: #9a6743;
             transform: translateY(-3px);
             box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
@@ -116,11 +118,11 @@
 
         }
 
-        
+
         .nav i {
             font-size: 25px;
         }
-        
+
         .loader {
             position: fixed;
             top: 0;
@@ -173,7 +175,7 @@
         #home a {
             color: white;
             padding: 0px;
-            margin: 0px;          
+            margin: 0px;
         }
 
 
@@ -288,7 +290,7 @@
             min-height: 280px;
             overflow: hidden;
         }
-        
+
         .promotion-text {
             padding: 30px 5%;
             width: 50%;
@@ -378,7 +380,7 @@
         .special-promotion img {
             width: 100%;
         }
-        
+
         .footer {
             background-color: #70452b;
             color: white;
@@ -446,8 +448,6 @@
             margin-bottom: 0;
             font-size: 13px;
         }
-
-     
     </style>
 </head>
 
@@ -482,6 +482,7 @@
                         <li><input type="text" placeholder="Search"></li>
                         <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                         <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+                        <li id="logout" hidden><a href="#">Log Out</a></li>
 
                     </ul>
                 </div>
@@ -489,7 +490,7 @@
         </div>
 
         <div class="contentFlex">
-           
+
             <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -506,7 +507,7 @@
                     <div class="carousel-item">
                         <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853" alt="...">
                     </div>
-                     
+
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
                     data-bs-slide="prev">
@@ -659,60 +660,86 @@
         </footer>
 
 
-        </div>
+    </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"></script>
-        <script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
 
 
-            let loader = document.getElementById("loader");
-            window.addEventListener("load", function () {
-                loader.classList.add("hide");
-            });
+        let loader = document.getElementById("loader");
+        window.addEventListener("load", function () {
+            loader.classList.add("hide");
+        });
 
-            document.addEventListener("DOMContentLoaded", function () {
-                const navLinks = document.querySelectorAll(".navList ul li a");
-                navLinks.forEach(link => {
-                    link.addEventListener("click", function (event) {
-                        event.preventDefault();
-                        const targetUrl = this.getAttribute("href");
-                        loader.classList.remove("hide");
-                        setTimeout(() => {
-                            window.location.href = targetUrl;
-                        }, 1000);
-                    });
+        document.addEventListener("DOMContentLoaded", function () {
+            const navLinks = document.querySelectorAll(".navList ul li a");
+            navLinks.forEach(link => {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const targetUrl = this.getAttribute("href");
+                    loader.classList.remove("hide");
+                    setTimeout(() => {
+                        window.location.href = targetUrl;
+                    }, 1000);
                 });
             });
+        });
 
 
-            const endDate = new Date();
-            endDate.setDate(endDate.getDate() + 3);
+        const endDate = new Date();
+        endDate.setDate(endDate.getDate() + 3);
 
-            function updateCountdown() {
-                const now = new Date();
-                const difference = endDate - now;
+        function updateCountdown() {
+            const now = new Date();
+            const difference = endDate - now;
 
-                if (difference <= 0) return;
+            if (difference <= 0) return;
 
-                document.getElementById("days").textContent =
-                    Math.floor(difference / (1000 * 60 * 60 * 24));
+            document.getElementById("days").textContent =
+                Math.floor(difference / (1000 * 60 * 60 * 24));
 
-                document.getElementById("hours").textContent =
-                    Math.floor((difference / (1000 * 60 * 60)) % 24);
+            document.getElementById("hours").textContent =
+                Math.floor((difference / (1000 * 60 * 60)) % 24);
 
-                document.getElementById("minutes").textContent =
-                    Math.floor((difference / (1000 * 60)) % 60);
+            document.getElementById("minutes").textContent =
+                Math.floor((difference / (1000 * 60)) % 60);
 
-                document.getElementById("seconds").textContent =
-                    Math.floor((difference / 1000) % 60);
-            }
+            document.getElementById("seconds").textContent =
+                Math.floor((difference / 1000) % 60);
+        }
 
-            updateCountdown();
-            setInterval(updateCountdown, 1000);
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
 
-        </script>
+        let login = document.getElementById("login");
+        let logout = document.getElementById("logout");
+
+        let userData = localStorage.getItem("userData");
+
+        if (userData) {
+            login.hidden = true;
+            logout.hidden = false;
+        } else {
+            login.hidden = false;
+            logout.hidden = true;
+
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Your work has been saved",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+
+
+        logout.addEventListener("click", function () {
+            localStorage.removeItem("userData");
+            login.hidden = false;
+            logout.hidden = true;
+        });
+
+    </script>
 </body>
 
 </html>
