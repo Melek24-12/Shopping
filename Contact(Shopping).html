@@ -349,7 +349,12 @@
         document.getElementById("contactForm").addEventListener("submit", function (event) {
             event.preventDefault();
 
-            alert("Thank you for contacting shoPIN!");
+           Swal.fire({
+                icon: 'success',
+                title: 'Message Sent',
+                text: 'Thank you for reaching out! We will get back to you soon.',
+                confirmButtonText: 'OK'
+            });
 
             this.reset();
         });
