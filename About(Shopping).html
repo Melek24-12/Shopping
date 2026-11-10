@@ -32,15 +32,46 @@
             justify-content: space-between;
             align-items: center;
             padding: 15px 30px;
-           
+
+        }
+        .nav input[type="text"] {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid grey;
         }
 
         .nav ul {
             list-style: none;
             display: flex;
             align-items: center;
-            gap: 30px;
-            flex-wrap: wrap;
+            gap: 20px;
+            
+        }
+
+        
+
+        #LogInA,
+        #logout a {
+            background-color: #70452b;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        #LogInA:hover,
+        #logout a:hover {
+            background-color: #9a6743;
+            transform: translateY(-2px);
+        }
+
+        #login[hidden] {
+            display: none !important;
+        }
+
+        #logout[hidden] {
+            display: none !important;
         }
 
         a {
@@ -119,7 +150,7 @@
             border-radius: 5px;
         }
 
-         .footer {
+        .footer {
             background-color: #70452b;
             color: white;
             padding: 35px 5% 15px;
@@ -187,8 +218,6 @@
             margin-bottom: 0;
             font-size: 13px;
         }
-
-       
     </style>
 </head>
 
@@ -247,93 +276,87 @@
         </section>
     </main>
 
-      <footer class="footer">
+    <footer class="footer">
 
-            <div class="footer-container">
+        <div class="footer-container">
 
-                <div class="footer-section">
-                    <h2>shoPIN</h2>
-                    <p>Your favorite online shopping destination.</p>
-                </div>
-
-                <div class="footer-section">
-                    <h3>About Us</h3>
-                    <a href="./About(Shopping).html">About Us</a>
-                    <a href="./Contact(Shopping).html">Contact Us</a>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Customer Service</h3>
-                    <a href="#">FAQ</a>
-                    <a href="#">Shipping Information</a>
-                    <a href="#">Return Policy</a>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <a href="./HomePage(Shopping).html">Home</a>
-                    <a href="./ShopPage(Shopping).html">Shop</a>
-                    <a href="./SignUp(Shopping).html">Sign Up</a>
-                    <a href="./Basket(Shopping).html">My Basket</a>
-                </div>
-
-                <div class="footer-section">
-                    <h3>Follow Us</h3>
-                    <div class="social-icons">
-                        <a href="#" aria-label="Instagram">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-
-                        <a href="#" aria-label="Facebook">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-
-                        <a href="#" aria-label="TikTok">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </a>
-                    </div>
-                </div>
-
+            <div class="footer-section">
+                <h2>shoPIN</h2>
+                <p>Your favorite online shopping destination.</p>
             </div>
 
-            <div class="footer-bottom">
-                <p>&copy; 2026 shoPIN. All rights reserved.</p>
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <a href="./About(Shopping).html">About Us</a>
+                <a href="./Contact(Shopping).html">Contact Us</a>
             </div>
 
-        </footer>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <a href="#">FAQ</a>
+                <a href="#">Shipping Information</a>
+                <a href="#">Return Policy</a>
+            </div>
 
-         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="./HomePage(Shopping).html">Home</a>
+                <a href="./ShopPage(Shopping).html">Shop</a>
+                <a href="./SignUp(Shopping).html">Sign Up</a>
+                <a href="./Basket(Shopping).html">My Basket</a>
+            </div>
 
-             let login = document.getElementById("login");
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fa-brands fa-facebook"></i>
+                    </a>
+
+                    <a href="#" aria-label="TikTok">
+                        <i class="fa-brands fa-tiktok"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 shoPIN. All rights reserved.</p>
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        let login = document.getElementById("login");
         let logout = document.getElementById("logout");
 
-        let userData = localStorage.getItem("userData");
+        let currentUserEmail = localStorage.getItem("currentUserEmail");
 
-        if (userData) {
+        if (currentUserEmail) {
             login.hidden = true;
             logout.hidden = false;
         } else {
             login.hidden = false;
             logout.hidden = true;
 
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Your work has been saved",
-                showConfirmButton: false,
-                timer: 1500
-            });
         }
 
 
-        logout.addEventListener("click", function () {
+        logout.addEventListener("click", function (e) {
+            e.preventDefault();
             localStorage.removeItem("currentUserEmail");
             login.hidden = false;
             logout.hidden = true;
         });
 
-        </script>
+    </script>
 </body>
 
 </html>

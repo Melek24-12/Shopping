@@ -65,7 +65,8 @@
             color: grey;
         }
 
-        #LogInA , .logout a {
+        #LogInA,
+        #logout a {
             background-color: #70452b;
             color: white;
             padding: 10px 20px;
@@ -75,10 +76,15 @@
             transition: all 0.3s ease;
         }
 
-        #LogInA:hover , .logout a:hover {
+        #LogInA:hover,
+        #logout a:hover {
             background-color: #9a6743;
             transform: translateY(-3px);
             box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
+        }
+
+        #logout[hidden] {
+            display: none !important;
         }
 
         .content {
@@ -215,7 +221,7 @@
 
 
 
-            if (localStorage.getItem("userData") ) {
+            if (localStorage.getItem("userData")) {
                 let userData = JSON.parse(localStorage.getItem("userData"));
                 if (inpName.value.trim() === userData.name.trim() && inpPass.value === userData.password) {
                     Swal.fire({
@@ -225,13 +231,13 @@
                     });
 
                     localStorage.setItem("currentUserEmail", userData.email);
-                } else if( inpName.value.trim() !== userData.name.trim() || inpPass.value !== userData.password) {
+                } else if (inpName.value.trim() !== userData.name.trim() || inpPass.value !== userData.password) {
                     Swal.fire({
                         title: "Invalid username or password.(or just try to sign up first)",
                         icon: "error",
                         draggable: true
                     });
-                    passwordInput.value = "";   
+                    passwordInput.value = "";
                     usernameInput.value = "";
                 }
             } else if (localStorage.getItem("userData") == null) {
@@ -239,35 +245,28 @@
                     title: "No user data found. Please sign up first.",
                     icon: "error",
                     draggable: true
-                    
+
                 });
             }
 
         })
 
-         let login = document.getElementById("login");
+        let login = document.getElementById("login");
         let logout = document.getElementById("logout");
 
-        let userData = localStorage.getItem("userData");
+        let currentUserEmail = localStorage.getItem("currentUserEmail");
 
-        if (userData) {
+        if (currentUserEmail) {
             login.hidden = true;
             logout.hidden = false;
         } else {
             login.hidden = false;
             logout.hidden = true;
-
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Your work has been saved",
-                showConfirmButton: false,
-                timer: 1500
-            });
         }
 
 
-        logout.addEventListener("click", function () {
+        logout.addEventListener("click", function (e) {
+            e.preventDefault();
             localStorage.removeItem("currentUserEmail");
             login.hidden = false;
             logout.hidden = true;

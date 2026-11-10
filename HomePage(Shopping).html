@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>shoPIN Home Page</title>
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/263/263142.png" type="image/png">
+
     <!-- icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -89,6 +91,10 @@
             background-color: #9a6743;
             transform: translateY(-3px);
             box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
+        }
+
+        #logout[hidden] {
+            display: none !important;
         }
 
         img {
@@ -714,27 +720,20 @@
         let login = document.getElementById("login");
         let logout = document.getElementById("logout");
 
-        let userData = localStorage.getItem("userData");
+        let currentUserEmail = localStorage.getItem("currentUserEmail");
 
-        if (userData) {
+        if (currentUserEmail) {
             login.hidden = true;
             logout.hidden = false;
         } else {
             login.hidden = false;
             logout.hidden = true;
-
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Your work has been saved",
-                showConfirmButton: false,
-                timer: 1500
-            });
         }
 
 
-        logout.addEventListener("click", function () {
-            localStorage.removeItem("userData");
+        logout.addEventListener("click", function (e) {
+            e.preventDefault();
+            localStorage.removeItem("currentUserEmail");
             login.hidden = false;
             logout.hidden = true;
         });

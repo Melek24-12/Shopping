@@ -39,9 +39,14 @@
             justify-content: space-between;
             padding: 10px;
 
-
         }
 
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
 
         .navList {
             display: flex;
@@ -60,7 +65,8 @@
             color: grey;
         }
 
-        #LogInA , .logout a {
+        #LogInA,
+        #logout a {
             background-color: #70452b;
             color: white;
             padding: 10px 20px;
@@ -70,10 +76,15 @@
             transition: all 0.3s ease;
         }
 
-        #LogInA:hover , .logout a:hover{
+        #LogInA:hover,
+        #logout a:hover {
             background-color: #9a6743;
             transform: translateY(-3px);
             box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
+        }
+
+        #logout[hidden] {
+            display: none !important;
         }
 
         #basket {
@@ -519,9 +530,9 @@
 
         <div class="tottal">
             <div class="tottalPrice">
-            <p>Total Price: $0.00</p>
-            <button id="checkoutBtn"><a href="./CheckOut(Shopping).html">Checkout</a></button>
-        </div>
+                <p>Total Price: $0.00</p>
+                <button id="checkoutBtn"><a href="./CheckOut(Shopping).html">Checkout</a></button>
+            </div>
         </div>
     </div>
 
@@ -699,29 +710,23 @@
                 `Total Price: $${totalPrice.toFixed(2)}`;
         }
 
-         let login = document.getElementById("login");
+        let login = document.getElementById("login");
         let logout = document.getElementById("logout");
 
-        let userData = localStorage.getItem("userData");
+        let currentUserEmail = localStorage.getItem("currentUserEmail");
 
-        if (userData) {
+        if (currentUserEmail) {
             login.hidden = true;
             logout.hidden = false;
         } else {
             login.hidden = false;
             logout.hidden = true;
 
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Your work has been saved",
-                showConfirmButton: false,
-                timer: 1500
-            });
         }
 
 
-        logout.addEventListener("click", function () {
+        logout.addEventListener("click", function (e) {
+            e.preventDefault();
             localStorage.removeItem("currentUserEmail");
             login.hidden = false;
             logout.hidden = true;

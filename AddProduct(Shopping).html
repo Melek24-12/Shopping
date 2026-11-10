@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Product - shoPIN</title>
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <style>
         * {
@@ -109,7 +109,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
         }
 
 
@@ -126,7 +126,8 @@
 
         }
 
-        #LogInA , .logout a {
+        #LogInA,
+        #logout a {
             background-color: #70452b;
             color: white;
             padding: 10px 20px;
@@ -136,24 +137,29 @@
             transition: all 0.3s ease;
         }
 
-        #LogInA:hover , .logout a:hover {
+        #LogInA:hover,
+        #logout a:hover {
             background-color: #9a6743;
             transform: translateY(-3px);
             box-shadow: 0 5px 12px rgba(112, 69, 43, 0.3);
         }
 
-        .nav i{
+        #logout[hidden] {
+            display: none !important;
+        }
+
+        .nav i {
             font-size: 25px;
         }
 
-         #addProductLi{
+        #addProductLi {
             background-color: #b9733a;
             padding: 6px 10px;
             padding-top: 8px;
             padding-bottom: 0px;
             border-radius: 20px;
             color: white;
-            
+
         }
 
         #addProductLi a {
@@ -161,7 +167,7 @@
             padding: 0px;
         }
 
-         .footer {
+        .footer {
             background-color: #70452b;
             color: white;
             padding: 35px 5% 15px;
@@ -229,71 +235,70 @@
             margin-bottom: 0;
             font-size: 13px;
         }
-
     </style>
 </head>
 
 <body>
 
     <div class="container">
-    <div class="header">
-        Welcome to shoPIN
-    </div>
+        <div class="header">
+            Welcome to shoPIN
+        </div>
 
-    <nav class="nav">
-        <h1>shoPIN</h1>
-        <ul>
-            <li><a href="./HomePage(Shopping).html">Home</a></li>
-            <li><a href="./SignUp(Shopping).html">Sign up</a></li>
-            <li><a href="./ShopPage(Shopping).html">Shop</a></li>
-            <li><a href="./Contact(Shopping).html">Contact Us</a></li>
-            <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
-            <li id="addProductLi"><a href="./AddProduct(Shopping).html">+Add product</a></li>
-            <li><a href="./MyProducts(Shopping).html">My products</a></li>
-            <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
-            <li><input type="text" placeholder="Search"></li>
-            <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-            <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
-            <li id="logout"><a href="#">Log out</a></li>
-        </ul>
-    </nav>
+        <nav class="nav">
+            <h1>shoPIN</h1>
+            <ul>
+                <li><a href="./HomePage(Shopping).html">Home</a></li>
+                <li><a href="./SignUp(Shopping).html">Sign up</a></li>
+                <li><a href="./ShopPage(Shopping).html">Shop</a></li>
+                <li><a href="./Contact(Shopping).html">Contact Us</a></li>
+                <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
+                <li id="addProductLi"><a href="./AddProduct(Shopping).html">+Add product</a></li>
+                <li><a href="./MyProducts(Shopping).html">My products</a></li>
+                <li><a href="./CheckOut(Shopping).html">Checkout</a></li>
+                <li><input type="text" placeholder="Search"></li>
+                <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+                <li id="logout"><a href="#">Log out</a></li>
+            </ul>
+        </nav>
 
-    <div class="form-container">
-        <h2>Add New Product</h2>
+        <div class="form-container">
+            <h2>Add New Product</h2>
 
-        <form id="productForm">
+            <form id="productForm">
 
-            <label for="productTitle">Product Name</label>
-            <input type="text" id="productTitle" required>
+                <label for="productTitle">Product Name</label>
+                <input type="text" id="productTitle" required>
 
-            <label for="productImg">Image URL</label>
-            <input type="url" id="productImg" required>
+                <label for="productImg">Image URL</label>
+                <input type="url" id="productImg" required>
 
-            <label for="productPrice">Price ($)</label>
-            <input type="number" id="productPrice" min="0.01" step="0.01" required>
+                <label for="productPrice">Price ($)</label>
+                <input type="number" id="productPrice" min="0.01" step="0.01" required>
 
-            <label for="productDescription">Description</label>
-            <textarea id="productDescription" required></textarea>
+                <label for="productDescription">Description</label>
+                <textarea id="productDescription" required></textarea>
 
-            <label for="productCategory">Category</label>
-            <select id="productCategory" required>
-                <option value="">Choose category</option>
-                <option value="electronics">Electronics</option>
-                <option value="wear">Wear</option>
-                <option value="home-essentials">Home Essentials</option>
-                <option value="beauty">Beauty</option>
-                <option value="accessories">Accessories</option>
-                <option value="sports">Sports</option>
-                <option value="books">Books</option>
-                <option value="toys">Toys</option>
-            </select>
+                <label for="productCategory">Category</label>
+                <select id="productCategory" required>
+                    <option value="">Choose category</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="wear">Wear</option>
+                    <option value="home-essentials">Home Essentials</option>
+                    <option value="beauty">Beauty</option>
+                    <option value="accessories">Accessories</option>
+                    <option value="sports">Sports</option>
+                    <option value="books">Books</option>
+                    <option value="toys">Toys</option>
+                </select>
 
-            <button type="submit">Add Product</button>
+                <button type="submit">Add Product</button>
 
-        </form>
-    </div>
+            </form>
+        </div>
 
-       <footer class="footer">
+        <footer class="footer">
 
             <div class="footer-container">
 
@@ -348,7 +353,7 @@
 
         </footer>
 
-        </div>
+    </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -398,29 +403,24 @@
             window.location.href = "./MyProducts(Shopping).html";
         });
 
-         let login = document.getElementById("login");
+        let login = document.getElementById("login");
         let logout = document.getElementById("logout");
 
-        let userData = localStorage.getItem("userData");
+        let currentUserEmail = localStorage.getItem("currentUserEmail");
 
-        if (userData) {
+        if (currentUserEmail) {
             login.hidden = true;
             logout.hidden = false;
         } else {
             login.hidden = false;
             logout.hidden = true;
 
-            Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: "Your work has been saved",
-                showConfirmButton: false,
-                timer: 1500
-            });
+
         }
 
 
-        logout.addEventListener("click", function () {
+        logout.addEventListener("click", function (e) {
+            e.preventDefault();
             localStorage.removeItem("currentUserEmail");
             login.hidden = false;
             logout.hidden = true;
