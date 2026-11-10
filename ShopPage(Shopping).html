@@ -44,7 +44,7 @@
         }
 
         .nav ul {
-             list-style: none;
+            list-style: none;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -965,38 +965,53 @@
         });
 
         cardsDiv.addEventListener("click", function (event) {
-            if (event.target.tagName === "BUTTON") {
-                let cardId = event.target.dataset.id;
-                let cardData = cards[cardId];
+            if (currentUserEmail) {
+                if (event.target.tagName === "BUTTON") {
+                    let cardId = event.target.dataset.id;
+                    let cardData = cards[cardId];
 
-                let cartItems =
-                    JSON.parse(localStorage.getItem("cartItems")) || [];
+                    let cartItems =
+                        JSON.parse(localStorage.getItem("cartItems")) || [];
 
-                let existingItem = cartItems.find(item => item.title === cardData.title);
+                    let existingItem = cartItems.find(item => item.title === cardData.title);
 
-                if (existingItem) {
-                    existingItem.quantity++;
-                } else {
-                    cartItems.push({
-                        ...cardData,
-                        quantity: 1
+                    if (existingItem) {
+                        existingItem.quantity++;
+                    } else {
+                        cartItems.push({
+                            ...cardData,
+                            quantity: 1
+                        });
+                    }
+
+
+                    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+                    Swal.fire({
+                        toast: true,
+                        position: 'top',
+                        icon: 'success',
+                        title: 'Səbətə əlavə olundu!',
+                        showConfirmButton: false,
+                        timer: 2000,
+                        timerProgressBar: true
                     });
                 }
-
-                localStorage.setItem("cartItems", JSON.stringify(cartItems));
-                localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
-                Swal.fire({
-                    toast: true,
-                    position: 'top',
-                    icon: 'success',
-                    title: 'Səbətə əlavə olundu!',
-                    showConfirmButton: false,
-                    timer: 2000,
-                    timerProgressBar: true
-                });
             }
+        else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Eror',
+                text: 'Sign up first to add products to the cart.',
+                confirmButtonText: 'OK'
+            });
+        }
         });
+
+
+
+
 
         let login = document.getElementById("login");
         let logout = document.getElementById("logout");
