@@ -889,6 +889,8 @@
 
         let cardsDiv = document.querySelector('.cards');
 
+        let allProducts = [];
+
         function showCards(category) {
             cardsDiv.innerHTML = "";
 
@@ -903,7 +905,7 @@
                 JSON.parse(localStorage.getItem("allProducts")) || [];
 
             // Bütün məhsulları birləşdiririk
-            let allProducts = [...defaultProducts, ...newProducts];
+             allProducts = [...defaultProducts, ...newProducts];
 
             allProducts.forEach(product => {
 
@@ -972,7 +974,7 @@
             if (currentUserEmail) {
                 if (event.target.tagName === "BUTTON") {
                     let cardId = event.target.dataset.id;
-                    let cardData = cards[cardId];
+                    let cardData = allProducts.find(product => product.id == cardId);
 
                     let cartItems =
                         JSON.parse(localStorage.getItem("cartItems")) || [];
