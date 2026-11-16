@@ -45,7 +45,7 @@
             align-items: center;
         }
 
-        .nav > ul {
+        .nav>ul {
             list-style: none;
             display: flex;
             justify-content: space-between;
@@ -119,7 +119,7 @@
             color: #777;
         }
 
-        .nav > ul {
+        .nav>ul {
             list-style: none;
             display: flex;
             justify-content: space-between;
@@ -183,15 +183,38 @@
             margin: 0;
         }
 
-        .navList input[type="text"] {
-            padding: 5px;
-            border-radius: 5px;
+       .navList input[type="text"] {
+            padding: 7px 35px 7px 10px;
+            border-radius: 20px;
             border: 1px solid grey;
+            text-decoration: none;
+
+        }
+
+        .navList input[type="text"]:hover {
+            text-decoration: none;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
         }
 
         .delete-btn {
             background-color: #b93a3a;
+            width: 45%;
             color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-btn {
+            background-color: #d88d2b;
+            color: white;
+            width: 45%;
             border: none;
             padding: 8px 12px;
             border-radius: 5px;
@@ -290,6 +313,57 @@
             font-size: 22px;
             border: none;
         }
+
+        .nav .dropdown-toggle {
+            width: auto;
+            margin: 0;
+            padding: 5px 10px;
+            background: transparent;
+            color: #70452b;
+            border: none;
+            font-size: 22px;
+            box-shadow: none;
+        }
+
+
+
+
+        .nav .dropdown-menu {
+            min-width: 190px;
+            padding: 8px;
+            background-color: white;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+        }
+
+
+        .nav .dropdown-menu li {
+            margin: 0;
+            padding: 0;
+            transform: none;
+            border-radius: 7px;
+        }
+
+        .nav .dropdown-menu li:hover {
+            transform: none;
+            text-decoration: none;
+        }
+
+        .nav .dropdown-menu .dropdown-item {
+            display: block;
+            margin: 0;
+            padding: 10px 12px;
+            color: #70452b;
+            transition: background-color 0.2s ease;
+        }
+
+        .nav .dropdown-menu .dropdown-item:hover {
+            background-color: #f5efec;
+            color: #70452b;
+            text-decoration: underline;
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 
@@ -339,7 +413,7 @@
                         </li>
                     </ul>
                 </li>
-                <li><input type="text" placeholder="Search"></li>
+                <li><input type="text" placeholder="Search" class="searchInp"></li>
                 <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                 <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
                 <li id="logout" hidden><a href="#">Log Out</a></li>
@@ -410,7 +484,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         let cardsContainer = document.querySelector(".cards");
@@ -442,7 +516,10 @@
                         <h3>${product.title}</h3>
                         <span>${product.description}</span>
                         <p>$${product.price.toFixed(2)}</p>
+                        <div class="buttons">
                         <button class="delete-btn" onclick="deleteProduct('${product.id}')">Delete</button>
+                        <button class="edit-btn" onclick="editProduct('${product.id}')">Edit</button>
+                        </div>
                     `;
 
                     cardsContainer.appendChild(card);
@@ -487,6 +564,66 @@
             });
         }
 
+        function editProduct(productId) {
+            let allProducts = JSON.parse(localStorage.getItem("allProducts")) || [];
+
+            let product = allProducts.find(
+                item => String(item.id) === String(productId)
+            );
+
+            if (!product) return;
+
+            Swal.fire({
+                title: "Edit Product",
+                background: "#f5efec",
+                color: "#70452b",
+                html: `
+            <input id="editTitle" class="swal2-input" placeholder="Product Name" value="${product.title}">
+            <input id="editImg" class="swal2-input" placeholder="Image URL" value="${product.img}">
+            <input id="editPrice" type="number" class="swal2-input" placeholder="Price" value="${product.price}">
+            <textarea id="editDescription" class="swal2-textarea" placeholder="Description">${product.description}</textarea>
+        `,
+                showCancelButton: true,
+                confirmButtonText: "Save Changes",
+                cancelButtonText: "Cancel",
+                confirmButtonColor: "#328818",
+                cancelButtonColor: "#881818",
+
+                preConfirm: () => {
+                    let title = document.getElementById("editTitle").value.trim();
+                    let img = document.getElementById("editImg").value.trim();
+                    let price = Number(document.getElementById("editPrice").value);
+                    let description = document.getElementById("editDescription").value.trim();
+
+                    if (!title || !img || !description || price <= 0 || !Number.isFinite(price)) {
+                        Swal.showValidationMessage("Please fill in all fields correctly!");
+                        return false;
+                    }
+
+                    return { title, img, price, description };
+                }
+
+            }).then((result) => {
+
+                if (result.isConfirmed) {
+                    product.title = result.value.title;
+                    product.img = result.value.img;
+                    product.price = result.value.price;
+                    product.description = result.value.description;
+
+                    localStorage.setItem("allProducts", JSON.stringify(allProducts));
+
+                    Swal.fire({
+                        icon: "success",
+                        title: "Product Updated!",
+                        confirmButtonColor: "#328818"
+                    }).then(() => {
+                        window.location.reload();
+                    });
+                }
+            });
+        }
+
         let login = document.getElementById("login");
         let logout = document.getElementById("logout");
 
@@ -507,6 +644,15 @@
             localStorage.removeItem("currentUserEmail");
             login.hidden = false;
             logout.hidden = true;
+        });
+
+          let searchInp = document.querySelector(".searchInp");
+
+        searchInp.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && searchInp.value.trim() !== "") {
+                e.preventDefault();
+                Swal.fire("Go to the Shop page for searching!");
+            }
         });
 
     </script>

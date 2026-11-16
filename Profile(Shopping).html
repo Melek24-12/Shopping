@@ -79,10 +79,16 @@
             transform: translateY(-2px);
         }
 
-        .navList input {
-            padding: 5px;
-            border-radius: 5px;
+        .navList input[type="text"] {
+            padding: 7px 35px 7px 10px;
+            border-radius: 20px;
             border: 1px solid grey;
+            text-decoration: none;
+
+        }
+
+        .navList input[type="text"]:hover {
+            text-decoration: none;
         }
         
         .navList li input[type="text"] :hover {
@@ -331,7 +337,7 @@
                             </ul>
                         </li>
 
-                        <li><input type="text" placeholder="Search"></li>
+                        <li><input type="text" placeholder="Search" class="searchInp"></li>
                         <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
                         <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
                         <li id="logout" hidden><a href="#">Log Out</a></li>
@@ -452,7 +458,7 @@
                 title: 'Please log in first.',
                 text: 'No user data found. Redirecting to login page...',
                 showConfirmButton: false,
-                timer: 3000
+                timer: 4000
             }).then(() => {
                 window.location.href = "./LoginPage(Shopping).html";
             }); 
@@ -511,6 +517,15 @@
             e.preventDefault();
             localStorage.removeItem("currentUserEmail");
             window.location.href = "./HomePage(Shopping).html";
+        });
+
+          let searchInp = document.querySelector(".searchInp");
+
+        searchInp.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && searchInp.value.trim() !== "") {
+                e.preventDefault();
+                Swal.fire("Go to the Shop page for searching!");
+            }
         });
     </script>
 

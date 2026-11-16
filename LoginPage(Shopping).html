@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> shoPin Login Page </title>
+     
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+   
     <!-- bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -54,9 +59,15 @@
         }
 
         .navList input[type="text"] {
-            padding: 5px;
-            border-radius: 5px;
+            padding: 7px 35px 7px 10px;
+            border-radius: 20px;
             border: 1px solid grey;
+            text-decoration: none;
+
+        }
+
+        .navList input[type="text"]:hover {
+            text-decoration: none;
         }
 
         ul {
@@ -107,7 +118,7 @@
 
         form {
             background-color: white;
-            min-height: 300px;
+            min-height:370px;
             padding: 20px;
             border-radius: 5px;
             box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
@@ -188,6 +199,11 @@
             font-size: 22px;
             border: none;
         }
+
+        .basketIcon{
+            font-size: 25px;
+        }
+
     </style>
 </head>
 
@@ -239,8 +255,8 @@
                             </li>
                         </ul>
                     </li>
-                    <li><input type="text" placeholder="Search"></li>
-                    <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li><input type="text" placeholder="Search" class="searchInp"></li>
+                    <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping basketIcon"></i></a></li>
                     <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
                     <li id="logout" hidden><a href="#">Log Out</a></li>
 
@@ -261,6 +277,10 @@
             </form>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
@@ -293,6 +313,11 @@
                     });
 
                     localStorage.setItem("currentUserEmail", userData.email);
+
+                    inpName.value = "";
+                    inpPass.value ="";
+                    
+                    
                 } else if (inpName.value.trim() !== userData.name.trim() || inpPass.value !== userData.password) {
                     Swal.fire({
                         title: "Invalid username or password.(or just try to sign up first)",
@@ -332,6 +357,15 @@
             localStorage.removeItem("currentUserEmail");
             login.hidden = false;
             logout.hidden = true;
+        });
+
+          let searchInp = document.querySelector(".searchInp");
+
+        searchInp.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && searchInp.value.trim() !== "") {
+                e.preventDefault();
+                Swal.fire("Go to the Shop page for searching!");
+            }
         });
 
     </script>

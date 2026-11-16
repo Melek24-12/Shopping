@@ -19,6 +19,13 @@
             box-sizing: border-box;
         }
 
+        .main-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        
         body {
             font-family: sans-serif;
             background-color: rgb(245, 239, 236);
@@ -41,7 +48,7 @@
 
         }
 
-        .nav > ul {
+        .nav>ul {
             list-style: none;
             display: flex;
             align-items: center;
@@ -50,10 +57,16 @@
 
         }
 
-        .nav input[type="text"] {
-            padding: 5px;
-            border-radius: 5px;
+       .navList input[type="text"] {
+            padding: 7px 35px 7px 10px;
+            border-radius: 20px;
             border: 1px solid grey;
+            text-decoration: none;
+
+        }
+
+        .navList input[type="text"]:hover {
+            text-decoration: none;
         }
 
         li {
@@ -102,17 +115,6 @@
         a {
             text-decoration: none;
             color: grey;
-        }
-
-        .nav a:hover {
-            color: rgb(177, 104, 45);
-        }
-
-        #contactLink {
-            background-color: #b9733a;
-            padding: 8px 12px;
-            border-radius: 15px;
-            color: white;
         }
 
         .main {
@@ -194,7 +196,7 @@
             color: white;
         }
 
-    
+
         .footer-section {
             margin-bottom: 20px;
         }
@@ -248,145 +250,149 @@
             color: #70452b;
         }
 
-        .dropdown-toggle {
-            color: #70452b;
-            font-size: 22px;
-            border: none;
+        .dropdown-toggle .dropdown-toggle:focus .dropdown-toggle:active .dropdown-toggle:hover {
+            color: #70452b !important;
+            font-size: 22px !important;
+            border: none !important;
         }
     </style>
 </head>
 
 <body>
-    <div class="header">We are happy to hear from you!</div>
 
-    <nav class="nav">
-        <h1>shoPIN</h1>
+    <div class="main-container">
+        <div class="header">We are happy to hear from you!</div>
 
-         <ul>
-                        <li id="home"><a href="./HomePage(Shopping).html">Home</a></li>
-                        <li><a href="./SignUp(Shopping).html">Sign up</a></li>
-                        <li><a href="./ShopPage(Shopping).html">Shop</a></li>
-                        <li><a href="./Contact(Shopping).html">Contact Us</a></li>
-                        <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
-                        <li class="nav-item dropdown">
-                            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="fa-solid fa-ellipsis"></i>
-                            </button>
+        <nav class="nav">
+            <h1>shoPIN</h1>
 
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li>
-                                    <a class="dropdown-item" href="./AddProduct(Shopping).html">
-                                        Add Product
-                                    </a>
-                                </li>
+            <ul>
+                <li id="home"><a href="./HomePage(Shopping).html">Home</a></li>
+                <li><a href="./SignUp(Shopping).html">Sign up</a></li>
+                <li><a href="./ShopPage(Shopping).html">Shop</a></li>
+                <li><a href="./Contact(Shopping).html">Contact Us</a></li>
+                <li><a href="./About(Shopping).html" id="aboutLink">About Us</a></li>
+                <li class="nav-item dropdown">
+                    <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-ellipsis icon"></i>
+                    </button>
 
-                                <li>
-                                    <a class="dropdown-item" href="./MyProducts(Shopping).html">
-                                        My Products
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item" href="./CheckOut(Shopping).html">
-                                        Checkout
-                                    </a>
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item" href="./Profile(Shopping).html">
-                                        Profile
-                                    </a>
-                                </li>
-                            </ul>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item" href="./AddProduct(Shopping).html">
+                                Add Product
+                            </a>
                         </li>
-                        <li><input type="text" placeholder="Search"></li>
-                        <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
-                        <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
-                        <li id="logout" hidden><a href="#">Log Out</a></li>
 
+                        <li>
+                            <a class="dropdown-item" href="./MyProducts(Shopping).html">
+                                My Products
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="./CheckOut(Shopping).html">
+                                Checkout
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="dropdown-item" href="./Profile(Shopping).html">
+                                Profile
+                            </a>
+                        </li>
                     </ul>
-    </nav>
+                </li>
+                <li><input type="text" placeholder="Search" class="searchInp"></li>
+                <li><a href="./Basket(Shopping).html"><i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li id="login"><a href="./LoginPage(Shopping).html" id="LogInA">Log In</a></li>
+                <li id="logout" hidden><a href="#">Log Out</a></li>
 
-    <main class="main">
-        <div class="contactInfo">
-            <h2>Contact Us</h2>
-            <p>Have a question? Send us a message!</p>
-        </div>
+            </ul>
+        </nav>
 
-        <form id="contactForm">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="Enter your name" required>
-
-            <label for="email">Your Email</label>
-            <input type="email" id="email" placeholder="Enter your email" required>
-
-            <label for="subject">Subject</label>
-            <input type="text" id="subject" placeholder="Enter subject" required>
-
-            <label for="message">Message</label>
-            <textarea id="message" placeholder="Write your message..." required></textarea>
-
-            <button type="submit">Send Message</button>
-        </form>
-    </main>
-
-    <footer class="footer">
-
-        <div class="footer-container">
-
-            <div class="footer-section">
-                <h2>shoPIN</h2>
-                <p>Your favorite online shopping destination.</p>
+        <main class="main">
+            <div class="contactInfo">
+                <h2>Contact Us</h2>
+                <p>Have a question? Send us a message!</p>
             </div>
 
-            <div class="footer-section">
-                <h3>About Us</h3>
-                <a href="./About(Shopping).html">About Us</a>
-                <a href="./Contact(Shopping).html">Contact Us</a>
-            </div>
+            <form id="contactForm">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" placeholder="Enter your name" required>
 
-            <div class="footer-section">
-                <h3>Customer Service</h3>
-                <a href="#">FAQ</a>
-                <a href="#">Shipping Information</a>
-                <a href="#">Return Policy</a>
-            </div>
+                <label for="email">Your Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
 
-            <div class="footer-section">
-                <h3>Quick Links</h3>
-                <a href="./HomePage(Shopping).html">Home</a>
-                <a href="./ShopPage(Shopping).html">Shop</a>
-                <a href="./SignUp(Shopping).html">Sign Up</a>
-                <a href="./Basket(Shopping).html">My Basket</a>
-            </div>
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" placeholder="Enter subject" required>
 
-            <div class="footer-section">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#" aria-label="Instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
+                <label for="message">Message</label>
+                <textarea id="message" placeholder="Write your message..." required></textarea>
 
-                    <a href="#" aria-label="Facebook">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
+                <button type="submit">Send Message</button>
+            </form>
+        </main>
 
-                    <a href="#" aria-label="TikTok">
-                        <i class="fa-brands fa-tiktok"></i>
-                    </a>
+        <footer class="footer">
+
+            <div class="footer-container">
+
+                <div class="footer-section">
+                    <h2>shoPIN</h2>
+                    <p>Your favorite online shopping destination.</p>
                 </div>
+
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <a href="./About(Shopping).html">About Us</a>
+                    <a href="./Contact(Shopping).html">Contact Us</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Customer Service</h3>
+                    <a href="#">FAQ</a>
+                    <a href="#">Shipping Information</a>
+                    <a href="#">Return Policy</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="./HomePage(Shopping).html">Home</a>
+                    <a href="./ShopPage(Shopping).html">Shop</a>
+                    <a href="./SignUp(Shopping).html">Sign Up</a>
+                    <a href="./Basket(Shopping).html">My Basket</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+
+                        <a href="#" aria-label="Facebook">
+                            <i class="fa-brands fa-facebook"></i>
+                        </a>
+
+                        <a href="#" aria-label="TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
             </div>
 
-        </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 shoPIN. All rights reserved.</p>
+            </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2026 shoPIN. All rights reserved.</p>
-        </div>
+        </footer>
 
-    </footer>
+    </div>
 
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
@@ -395,7 +401,7 @@
         document.getElementById("contactForm").addEventListener("submit", function (event) {
             event.preventDefault();
 
-           Swal.fire({
+            Swal.fire({
                 icon: 'success',
                 title: 'Message Sent',
                 text: 'Thank you for reaching out! We will get back to you soon.',
@@ -425,6 +431,15 @@
             localStorage.removeItem("currentUserEmail");
             login.hidden = false;
             logout.hidden = true;
+        });
+
+          let searchInp = document.querySelector(".searchInp");
+
+        searchInp.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" && searchInp.value.trim() !== "") {
+                e.preventDefault();
+                Swal.fire("Go to the Shop page for searching!");
+            }
         });
     </script>
 </body>
